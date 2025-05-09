@@ -12,7 +12,8 @@
 	} from '$lib/components/ui/card';
 	import Image from '$lib/components/Image.svelte';
 	import { page } from '$app/state';
-	import { serviceImagesDict } from '$lib/icons/services/service_images';
+	// import { serviceImagesDict } from '$lib/icons/services/service_images';
+
 	import { PUBLIC_COMPANY_NAME, PUBLIC_DOMAIN } from '$env/static/public';
 
 	onMount(() => {
@@ -74,12 +75,12 @@
 								width="480"
 								quality={75}
 							/> -->
-							<enhanced:img
+							<!-- <enhanced:img
 								class="aspect-square h-auto w-full object-cover transition-all duration-500 ease-in-out hover:scale-105"
 								src={serviceImagesDict[serviceId]}
 								sizes="640px"
 								alt={`${serviceData[serviceId].title} service highlight - `}
-							/>
+							/> -->
 						</div>
 
 						<span class="font-[Alatsi] text-xl"
