@@ -324,12 +324,11 @@
 		<h2
 			class="mx-auto max-w-4xl text-center text-2xl font-semibold leading-tight md:text-5xl lg:text-4xl"
 		>
-			Transform Your Home with Professional Cleaning
+			Boost Your Brand, Grow Your Business
 		</h2>
 		<div class="my-2 h-1 w-24 rounded-full bg-primary"></div>
 		<p class="mx-auto max-w-3xl text-center text-lg text-muted-foreground">
-			Experience the difference professional cleaning makes. Our expert team delivers exceptional
-			results that will enhance your property's curb appeal and value.
+			<!-- description -->
 		</p>
 	</section>
 
@@ -338,7 +337,7 @@
 		<div class="w-full lg:w-1/2">
 			<Image
 				url="/assets/landing/team.jpg"
-				description="{PUBLIC_COMPANY_NAME} professional cleaning team in Vancouver"
+				description="{PUBLIC_COMPANY_NAME}"
 				class="h-[60vh] w-full rounded-lg object-cover shadow-xl saturate-50"
 				width="800"
 				height="600"
@@ -412,7 +411,7 @@
 			<div class="absolute inset-0 bg-secondary-foreground/65">&nbsp;</div>
 		</div>
 		<div class="container relative z-10 mx-auto my-auto text-center">
-			<h2 class="mb-4 text-4xl font-semibold">Ready to Transform Your Property?</h2>
+			<h2 class="mb-4 text-4xl font-semibold">Ready to ?</h2>
 			<p class="mb-8 text-xl opacity-90">Call now for a free consultation and estimate</p>
 			<a
 				href="tel:778-804-5911"

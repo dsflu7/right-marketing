@@ -15,6 +15,7 @@
 	import Dropdown from '$lib/components/Dropdown.svelte';
 	import DropdownItem from '$lib/components/DropdownItem.svelte';
 	import Image from './Image.svelte';
+	import MainLogo from '$lib/icons/MainLogo.svelte';
 
 	// import logoAddr from '$lib/icons/logo.png?enhanced';
 
@@ -50,7 +51,8 @@
 			aria-label="Go to home page"
 		>
 			<!-- <Logo class="h-full w-full" /> -->
-			<Image url="/assets/logo.png" description="company logo header" width="64px" height="64px" />
+			 <MainLogo class="h-16 w-min" />
+			<!-- <Image url="/assets/logo.png" description="company logo header" width="64px" height="64px" /> -->
 			<!-- <enhanced:img sizes="64px" src={logoAddr} alt="company logo header" class="h-full w-full" /> -->
 		</a>
 	</div>
