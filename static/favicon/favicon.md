@@ -1,0 +1,1 @@
+favicon and manifest stuff goes here
