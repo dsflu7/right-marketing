@@ -51,9 +51,9 @@
 	</div>
 {/if}
 
-<ComingSoon />
+<!-- <ComingSoon /> -->
 
-<div class="h-screen flex-col justify-between hidden">
+<div class="h-screen flex-col justify-between flex">
 	<Header />
 	<main class="">
 		{@render children?.()}
