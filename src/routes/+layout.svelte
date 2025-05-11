@@ -51,8 +51,6 @@
 	</div>
 {/if}
 
-<!-- <ComingSoon /> -->
-
 <div class="h-screen flex-col justify-between flex">
 	<Header />
 	<main class="">
