@@ -11,7 +11,7 @@
 	import { PUBLIC_COMPANY_NAME } from '$env/static/public';
 	import { Cross2, HamburgerMenu } from 'svelte-radix';
 	import { services } from '$lib/data/services';
-	import { contactInfo, locationIds } from '$lib/data/locations';
+	import { contactInfo } from '$lib/data/locations';
 	import Dropdown from '$lib/components/Dropdown.svelte';
 	import DropdownItem from '$lib/components/DropdownItem.svelte';
 	import Image from './Image.svelte';
@@ -152,35 +152,32 @@
 				</Dropdown>
 
 				<Dropdown
-					label="Locations"
+					label="About"
 					buttonClass={colorState ? 'text-white' : 'text-black'}
-					title="Service Areas"
+					title="About Us"
 					menuClass="w-56"
 				>
 					<DropdownItem
 						onclick={() => {
-							goto('/locations');
-							$servicesPageNavigating = true;
+							goto('/our-story');
 						}}
-						class="border-b"
 					>
-						<a href="{domain}/locations/" onclick={(e) => e.preventDefault()}> All Locations </a>
+						<a href="{domain}/our-story/" onclick={(e) => e.preventDefault()}>Our Story</a>
 					</DropdownItem>
-					{#each locationIds as slug}
-						<DropdownItem
-							onclick={() => {
-								goto(`/locations/${slug}`);
-								$servicesPageNavigating = true;
-							}}
-						>
-							<a href="{domain}/locations/{slug}" onclick={(e) => e.preventDefault()}>
-								{slug
-									?.split('-')
-									.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-									.join(' ')}
-							</a>
-						</DropdownItem>
-					{/each}
+					<DropdownItem
+						onclick={() => {
+							goto('/privacy-policy');
+						}}
+					>
+						<a href="{domain}/privacy-policy/" onclick={(e) => e.preventDefault()}>Privacy Policy</a>
+					</DropdownItem>
+					<DropdownItem
+						onclick={() => {
+							goto('/terms-and-conditions');
+						}}
+					>
+						<a href="{domain}/terms-and-conditions/" onclick={(e) => e.preventDefault()}>Terms & Conditions</a>
+					</DropdownItem>
 				</Dropdown>
 
 				<a
@@ -191,11 +188,11 @@
 					}}
 					class="font-semibold {colorState ? 'text-white' : 'text-black'}"
 				>
-					Gallery
+					Success Stories
 				</a>
 
 				<div class="flex items-center gap-4 md:flex-row md:gap-7">
-					<a href="" aria-label="Go to instagram page" class="text-xs font-semibold uppercase">
+					<a href={contactInfo.instagram} aria-label="Go to instagram page" class="text-xs font-semibold uppercase">
 						<Instagram color={colorState ? 'white' : 'black'} />
 					</a>
 					<a

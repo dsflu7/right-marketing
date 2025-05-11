@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_COMPANY_NAME, PUBLIC_DOMAIN } from '$env/static/public';
+	import { contactInfo } from '$lib/data/locations';
 	import MainLogo from '$lib/icons/MainLogo.svelte';
 	import { quoteDialogOpen } from '$lib/utils/stores';
 	import Image from './Image.svelte';
@@ -26,9 +27,9 @@
 			>
 		</div>
 		<div class="flex gap-2 lg:gap-8">
-			<a href="">Instagram</a>
-			<a href="">TikTok</a>
-			<a href="">Facebook</a>
+			<a href={contactInfo.instagram}>Instagram</a>
+			<a href={contactInfo.tiktok}>TikTok</a>
+			<a href={contactInfo.facebook}>Facebook</a>
 		</div>
 	</div>
 

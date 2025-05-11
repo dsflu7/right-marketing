@@ -70,7 +70,7 @@
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}}
 	>
-		<CaretUp class="scale-125 text-foreground transition-all duration-500 group-hover:scale-110" />
+		<CaretUp class="scale-125 text-primary-foreground transition-all duration-500 group-hover:scale-110" />
 	</button>
 {/if}
 

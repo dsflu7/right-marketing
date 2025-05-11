@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { contactInfo } from '$lib/data/locations';
 	import MainLogo from '../icons/MainLogo.svelte';
 
 	const socials = [
-		{ name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61573842316284'},
-		{ name: 'Instagram', url: 'https://www.instagram.com/rightmarketing.ca/'},
-		{ name: 'Phone', url: 'tel:+17783825911'},
+		{ name: 'Facebook', url: contactInfo.facebook },
+		{ name: 'Instagram', url: contactInfo.instagram },
+		{ name: 'Phone', url: `tel:+1${contactInfo.phone}` }
 	];
 </script>
 
@@ -17,7 +18,7 @@
 				href={social.url}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-primary-foreground border-b border-b-transparent hover:border-b-primary-foreground transition-all duration-300 ease-in-out"
+				class="border-b border-b-transparent text-primary-foreground transition-all duration-300 ease-in-out hover:border-b-primary-foreground"
 			>
 				{social.name}
 			</a>
