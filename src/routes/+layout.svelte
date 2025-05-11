@@ -51,9 +51,7 @@
 	</div>
 {/if}
 
-<ComingSoon />
-
-<div class="h-screen flex-col justify-between hidden">
+<div class="h-screen flex-col justify-between flex">
 	<Header />
 	<main class="">
 		{@render children?.()}
@@ -70,7 +68,7 @@
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}}
 	>
-		<CaretUp class="scale-125 text-foreground transition-all duration-500 group-hover:scale-110" />
+		<CaretUp class="scale-125 text-primary-foreground transition-all duration-500 group-hover:scale-110" />
 	</button>
 {/if}
 

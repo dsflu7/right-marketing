@@ -59,19 +59,19 @@
 	>
 	<meta
 		name="description"
-		content=""
+		content="{selectedServiceData?.shortDescription || `Professional ${formatServiceName(page.params.id)} services from Right Marketing`}"
 	/>
 	<meta
 		name="keywords"
-		content="d"
+		content="{formatServiceName(page.params.id)}, digital marketing, {page.params.id.replace(/-/g, ', ')}, professional services, ${selectedServiceData?.keyFeatures?.join(', ')}"
 	/>
 	<meta
 		property="og:title"
-		content=""
+		content="{selectedServiceData?.title || formatServiceName(page.params.id)} | {PUBLIC_COMPANY_NAME}"
 	/>
 	<meta
 		property="og:description"
-		content=""
+		content="{selectedServiceData?.shortDescription || `Professional ${formatServiceName(page.params.id)} services from Right Marketing`}"
 	/>
 	<meta property="og:image" content="/assets/services/{page.params.id}/1.webp" />
 	<meta property="og:url" content="https://www.{PUBLIC_DOMAIN}/services/{page.params.id}" />
@@ -248,30 +248,60 @@
 	</section>
 
 	<!-- Phone CTA -->
-	<section class="relative flex h-[60vh] w-full items-center justify-center py-24 text-white">
-		<div class="absolute inset-0 z-0">
-			<Image
-				url="/assets/landing/2.jpg"
-				description="Professional exterior cleaning background"
-				class="h-full w-full object-cover"
-			/>
-			<div class="absolute inset-0 bg-secondary-foreground/65">&nbsp;</div>
-		</div>
-		<div class="container relative z-10 mx-auto my-auto text-center">
-			<h2 class="mb-4 text-4xl font-semibold">Ready to Transform Your Property?</h2>
-			<p class="mb-8 text-xl opacity-90">Call now for a free consultation and estimate</p>
+	<section class="relative flex h-[60vh] w-full items-center justify-center bg-primary py-24 text-primary-foreground">
+		<div class="container mx-auto my-auto text-center">
+			<h2 class="mb-4 text-4xl font-semibold">Ready to Transform Your Digital Presence?</h2>
+			<p class="mb-8 text-xl opacity-90">Call now for a free consultation and strategy session</p>
 			<a
-				href="tel:778-804-5911"
+				href="tel:{contactInfo.phone}"
 				class="group inline-flex items-center gap-4 text-[8vw] font-bold hover:opacity-90"
 			>
 				<PhoneCall
 					class="h-auto w-[6vw] transition-transform group-hover:scale-110"
-					color="white"
+					color="currentColor"
 				/>
 				{contactInfo.phone.replace(/[^0-9]/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}
 			</a>
 		</div>
 	</section>
+
+	<!-- Process Timeline Section -->
+	{#if selectedServiceData.process && selectedServiceData.process.length > 0}
+		<section class="bg-primary font-[Cantarell] px-10 py-16 text-primary-foreground">
+			<div class="container mx-auto">
+				<h3 class="mb-12 text-center text-3xl font-semibold">Our Process</h3>
+				
+				<div class="relative mx-auto max-w-4xl">
+					<!-- Timeline Line -->
+					<div class="absolute left-[15px] top-0 h-full w-1 bg-white md:left-1/2 md:-ml-0.5"></div>
+					
+					<!-- Timeline Items -->
+					{#each selectedServiceData.process as step, i}
+						<div class="mb-8 flex flex-col md:mb-0 {i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}">
+							<div class="ml-8 flex-1 md:ml-0 {i % 2 === 0 ? 'md:mr-8 md:text-right' : 'md:ml-8'}">
+								<div class="rounded-lg bg-white p-6 shadow-lg">
+									<h4 class="mb-2 text-xl font-bold text-primary">{step.title}</h4>
+									<p class="text-gray-700">{step.description}</p>
+								</div>
+							</div>
+							
+							<div class="absolute left-0 mt-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-white text-primary md:left-1/2 md:-ml-4">
+								<span class="font-bold">{i + 1}</span>
+							</div>
+							
+							<div class="flex-1"></div>
+						</div>
+					{/each}
+				</div>
+				
+				{#if selectedServiceData.timeline}
+					<p class="mt-12 text-center text-lg">
+						<strong>Typical Timeline:</strong> {selectedServiceData.timeline}
+					</p>
+				{/if}
+			</div>
+		</section>
+	{/if}
 
 	<!-- FAQ Section -->
 	{#if selectedServiceData.faqItems && selectedServiceData.faqItems.length > 0}
