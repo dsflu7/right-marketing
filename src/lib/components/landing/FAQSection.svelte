@@ -10,7 +10,7 @@
 </script>
 
 <section class="flex w-full flex-col gap-8 pb-24 px-4 lg:gap-10">
-	<div class="mx-auto max-w-3xl">
+	<div class="mx-auto w-full max-w-3xl">
 		<div class="text-center">
 			<h2 class="text-3xl font-semibold md:text-4xl">Frequently Asked Questions</h2>
 			<div class="my-4 h-1 w-24 rounded-full bg-primary mx-auto"></div>
