@@ -2,6 +2,7 @@
 	import Image from '$lib/components/Image.svelte';
 	import { PUBLIC_COMPANY_NAME, PUBLIC_DOMAIN } from '$env/static/public';
 	import MainLogo from '$lib/icons/MainLogo.svelte';
+	import { contactInfo } from '$lib/data/locations';
 </script>
 
 <svelte:head>
@@ -173,13 +174,16 @@
 		<h3>11. Contact Information</h3>
 		<p class="mb-4">For questions regarding these Terms, please contact us at:</p>
 		<p>
-			<!-- TODO: update contact -->
 			<strong>Right Marketing LLC</strong><br />
-			1234 Digital Avenue, Suite 500<br />
-			Marketing City, MC 12345<br />
-			Email: <a href="mailto:legal@rightmarketing.com" class="underline hover:text-blue-600">legal@rightmarketing.com</a><br />
-			Phone: <a href="tel:5551234567" class="underline hover:text-blue-600">(555) 123-4567</a>
-		</p>
+			{contactInfo.address}
+			Email:
+			<a href="mailto:privacy@{PUBLIC_DOMAIN}" class="underline hover:text-blue-600"
+				>privacy@{PUBLIC_DOMAIN}</a
+			><br />
+			Phone:
+			<a href="tel:+1{contactInfo.phone}" class="underline hover:text-blue-600"
+				>{contactInfo.phone}</a
+			>	</p>
 	</section>
 </main>
 
