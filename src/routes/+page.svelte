@@ -196,18 +196,14 @@
 <main class="flex w-full flex-col items-center gap-16 pb-48 lg:gap-16">
 	<!-- Hero Section -->
 	<section
-		class="relative flex h-[85vh] w-full flex-row justify-evenly gap-0 overflow-hidden object-cover text-background"
+		class="relative flex h-[90vh] w-full flex-row justify-evenly gap-0 overflow-hidden object-cover text-background"
 	>
-		<Image
-			url="/assets/landing/1.webp"
-			description="Professional exterior cleaning service in action - {PUBLIC_COMPANY_NAME} hero image"
-			fetchpriority="high"
-			class="h-full w-full object-cover"
-			size={[640]}
-			quality={80}
-		/>
-
-		<div class="absolute h-full w-full bg-black/30">&nbsp;</div>
+		<!-- Water-like gradient background with noise texture -->
+		<div class="absolute inset-0 bg-gradient-to-b from-primary via-primary/90 to-primary-foreground/70 overflow-hidden">
+			<div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary-foreground/40 to-primary/90"></div>
+			<div class="absolute inset-0 bg-noise opacity-15"></div>
+		</div>
+		
 		<HeroSection {scrollToServices} />
 	</section>
 
@@ -245,4 +241,12 @@
 	.shadow-text {
 		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 	}
+	
+	.bg-noise {
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+		background-repeat: repeat;
+		background-size: 250px 250px;
+		mix-blend-mode: soft-light;
+	}
+
 </style>

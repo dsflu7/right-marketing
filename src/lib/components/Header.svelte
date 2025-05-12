@@ -20,6 +20,9 @@
 	// import logoAddr from '$lib/icons/logo.png?enhanced';
 
 	let initScroll = $state(0);
+	let lastScrollY = $state(0);
+	let scrollDirection = $state('up'); // 'up' or 'down'
+	let headerVisible = $state(true);
 	let isLandingPage = $derived(page.route.id === '/');
 
 	let mobileNavButtonWidth: number = $state(0);
@@ -28,6 +31,29 @@
 
 	$effect(() => {
 		$isMobile = mobileNavButtonWidth !== 0;
+	});
+
+	// Detect scroll direction and update header visibility
+	$effect(() => {
+		// Don't hide header when mobile menu is open or at the top of the page
+		if (mobileNavOpen || initScroll < 50) {
+			headerVisible = true;
+			return;
+		}
+		
+		// Determine scroll direction
+		if (initScroll > lastScrollY + 10) { // Add a small threshold to prevent jitter
+			// Scrolling down significantly
+			scrollDirection = 'down';
+			headerVisible = false;
+		} else if (lastScrollY > initScroll + 5) { // Smaller threshold for showing
+			// Scrolling up
+			scrollDirection = 'up';
+			headerVisible = true;
+		}
+
+		// Update last scroll position
+		lastScrollY = initScroll;
 	});
 
 	let colorState = $derived(!$isMobile ? initScroll < $scrollThreshold && isLandingPage : false);
@@ -41,7 +67,7 @@
 <svelte:window bind:scrollY={initScroll} />
 
 <nav class="realtive">
-	<div class="fixed left-[6%] top-10 z-[55] aspect-square h-16 w-16">
+	<div class="fixed left-[6%] {headerVisible ? 'top-10' : '-top-16'} z-[55] aspect-square h-16 w-16 transition-all duration-300 ease-out">
 		<a
 			href={domain}
 			onclick={(e) => {
@@ -58,7 +84,7 @@
 	</div>
 
 	<div
-		class="fixed top-0 z-[50] w-full bg-primary py-1 text-center font-[Cantarell] font-semibold text-primary-foreground md:pr-20 md:text-right lg:text-lg"
+		class="fixed top-0 z-[60] w-full bg-primary py-1 text-center font-[Cantarell] font-semibold text-primary-foreground md:pr-20 md:text-right lg:text-lg"
 	>
 		<a href="tel:{contactInfo.phone}">
 			Call us at {contactInfo.phone
@@ -69,10 +95,10 @@
 	</div>
 
 	<div
-		class="fixed top-8 z-50 flex h-20 w-full flex-row justify-between border-b px-[6%] {initScroll <
+		class="fixed {headerVisible ? 'top-8' : '-top-28'} z-50 flex h-20 w-full flex-row justify-between border-b px-[6%] {initScroll <
 			$scrollThreshold && isLandingPage
 			? 'border-transparent bg-transparent'
-			: ' bg-secondary'} border-black transition-all duration-500 ease-in-out"
+			: ' bg-primary'} border-black transition-all duration-500 ease-out"
 	>
 		<!-- <button
 			class="flex items-center pl-20 font-[Cantarell] text-xl lg:text-2xl {initScroll <
@@ -90,7 +116,7 @@
 		{#if !(initScroll < $scrollThreshold && isLandingPage) && $isMobile}
 			<Button
 				onclick={() => goto('/contact')}
-				variant={colorState ? 'secondary' : 'default'}
+				variant="secondary"
 				aria-label="Open quote request form"
 				class="absolute right-20 top-6"
 			>
@@ -121,7 +147,7 @@
 			>
 				<Dropdown
 					label="Services"
-					buttonClass={colorState ? 'text-white' : 'text-black'}
+					buttonClass={colorState ? 'text-white' : 'text-primary-foreground'}
 					title="Our Services"
 					menuClass="w-56"
 				>
@@ -153,7 +179,7 @@
 
 				<Dropdown
 					label="About"
-					buttonClass={colorState ? 'text-white' : 'text-black'}
+					buttonClass={colorState ? 'text-white' : 'text-primary-foreground'}
 					title="About Us"
 					menuClass="w-56"
 				>
@@ -186,26 +212,26 @@
 						e.preventDefault();
 						goto('/gallery');
 					}}
-					class="font-semibold {colorState ? 'text-white' : 'text-black'}"
+					class="font-semibold {colorState ? 'text-white' : 'text-primary-foreground'}"
 				>
 					Success Stories
 				</a>
 
 				<div class="flex items-center gap-4 md:flex-row md:gap-7">
 					<a href={contactInfo.instagram} aria-label="Go to instagram page" class="text-xs font-semibold uppercase">
-						<Instagram color={colorState ? 'white' : 'black'} />
+						<Instagram color={colorState ? 'white' : '#e3c099'} />
 					</a>
 					<a
 						href="tel:{contactInfo.phone}"
 						aria-label="Call phone number"
 						class="text-xs font-semibold uppercase"
 					>
-						<PhoneCall color={colorState ? 'white' : 'black'} />
+						<PhoneCall color={colorState ? 'white' : '#e3c099'} />
 					</a>
 				</div>
 				<Button
 					onclick={() => goto('/contact')}
-					variant={colorState ? 'secondary' : 'default'}
+					variant="secondary"
 					size="lg"
 					class="hidden lg:block"
 					aria-label="Open quote request form">Get Free Quote</Button

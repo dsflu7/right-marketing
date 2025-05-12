@@ -10,17 +10,9 @@
 	const domain = $derived(`${page.url.protocol}//${page.url.host}`);
 </script>
 
-<section class="relative flex h-[65vh] w-full items-center justify-center text-white">
-	<div class="absolute inset-0 z-0">
-		<Image
-			url="/assets/landing/2.jpg"
-			description="Right Marketing digital marketing strategy session"
-			class="h-full w-full object-cover"
-			width="1920"
-			height="1080"
-			quality={70}
-		/>
-		<div class="absolute inset-0 bg-secondary-foreground/65">&nbsp;</div>
+<section class="relative flex h-[65vh] w-full items-center justify-center text-secondary">
+	<div class="absolute inset-0 z-0 h-full w-full">
+		<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary">&nbsp;</div>
 	</div>
 	<div class="container relative z-10 mx-auto my-auto text-center">
 		<h2 class="mb-4 text-4xl font-semibold">Ready to Transform Your Marketing?</h2>

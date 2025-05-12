@@ -51,7 +51,7 @@
 		</Button>
 		<Button
 			onclick={() => goto('/services')}
-			variant="outline"
+			variant="secondary"
 			aria-label="Our Services"
 			class="bg-white/80 text-lg border-white hover:bg-white"
 			size="lg"
