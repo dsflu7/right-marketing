@@ -46,6 +46,83 @@
 	<meta property="og:url" content="https://www.{PUBLIC_DOMAIN}/services" />
 	<meta property="og:type" content="website" />
 	<link rel="canonical" href="https://www.{PUBLIC_DOMAIN}/services" />
+	
+	{@html `
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "CollectionPage",
+			"name": "Digital Marketing Services | ${PUBLIC_COMPANY_NAME}",
+			"description": "Discover Right Marketing's comprehensive digital marketing services including video production, ad campaigns, automation, website development, SEO, and social media management.",
+			"publisher": {
+				"@type": "Organization",
+				"name": "${PUBLIC_COMPANY_NAME}",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "${domain}/assets/logo.png"
+				}
+			},
+			"mainEntity": {
+				"@type": "ItemList",
+				"itemListElement": [
+					${services.map((serviceId, index) => `
+						{
+							"@type": "ListItem",
+							"position": ${index + 1},
+							"item": {
+								"@type": "Service",
+								"name": "${serviceData[serviceId]?.title || formatServiceName(serviceId)}",
+								"description": "${serviceData[serviceId]?.shortDescription.replace(/"/g, '\\"')}",
+								"url": "${domain}/services/${serviceId}"
+							}
+						}${index < services.length - 1 ? ',' : ''}`
+					).join('')}
+				]
+			}
+		}
+	</script>
+	`}
+
+	{@html `
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebPage",
+			"name": "Services | ${PUBLIC_COMPANY_NAME}",
+			"description": "Comprehensive digital marketing services that help small businesses gain visibility and grow their customer base through professional video, strategic advertising, and powerful automation.",
+			"url": "${domain}/services",
+			"provider": {
+				"@type": "Organization",
+				"name": "${PUBLIC_COMPANY_NAME}",
+				"url": "${domain}",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "${domain}/assets/logo.png"
+				}
+			},
+			"offers": {
+				"@type": "AggregateOffer",
+				"offerCount": "${services.length}",
+				"highPrice": "",
+				"lowPrice": "",
+				"priceCurrency": "USD",
+				"offers": [
+					${services.map(serviceId => `
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "${serviceData[serviceId]?.title || formatServiceName(serviceId)}",
+								"description": "${serviceData[serviceId]?.shortDescription.replace(/"/g, '\\"')}",
+								"url": "${domain}/services/${serviceId}"
+							}
+						}`
+					).join(',')}
+				]
+			}
+		}
+	</script>
+	`}
 </svelte:head>
 
 <main class="mt-24 p-10 lg:mt-16 lg:p-32">

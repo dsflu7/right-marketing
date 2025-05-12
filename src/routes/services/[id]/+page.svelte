@@ -59,32 +59,115 @@
 	>
 	<meta
 		name="description"
-		content="{selectedServiceData?.shortDescription || `Professional ${formatServiceName(page.params.id)} services from Right Marketing`}"
+		content={selectedServiceData?.shortDescription ||
+			`Professional ${formatServiceName(page.params.id)} services from Right Marketing`}
 	/>
 	<meta
 		name="keywords"
-		content="{formatServiceName(page.params.id)}, digital marketing, {page.params.id.replace(/-/g, ', ')}, professional services, ${selectedServiceData?.keyFeatures?.join(', ')}"
+		content="{formatServiceName(page.params.id)}, digital marketing, {page.params.id.replace(
+			/-/g,
+			', '
+		)}, professional services, ${selectedServiceData?.keyFeatures?.join(', ')}"
 	/>
 	<meta
 		property="og:title"
-		content="{selectedServiceData?.title || formatServiceName(page.params.id)} | {PUBLIC_COMPANY_NAME}"
+		content="{selectedServiceData?.title ||
+			formatServiceName(page.params.id)} | {PUBLIC_COMPANY_NAME}"
 	/>
 	<meta
 		property="og:description"
-		content="{selectedServiceData?.shortDescription || `Professional ${formatServiceName(page.params.id)} services from Right Marketing`}"
+		content={selectedServiceData?.shortDescription ||
+			`Professional ${formatServiceName(page.params.id)} services from Right Marketing`}
 	/>
 	<meta property="og:image" content="/assets/services/{page.params.id}/1.webp" />
 	<meta property="og:url" content="https://www.{PUBLIC_DOMAIN}/services/{page.params.id}" />
 	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="{PUBLIC_COMPANY_NAME}" />
+	<meta property="og:site_name" content={PUBLIC_COMPANY_NAME} />
 
 	<link rel="canonical" href="https://www.{PUBLIC_DOMAIN}/services/{page.params.id}" />
+
+	{@html `
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Service",
+			"name": "${selectedServiceData?.title || formatServiceName(page.params.id)}",
+			"description": "${selectedServiceData?.description?.replace(/"/g, '\\"').substring(0, 500)}${selectedServiceData?.description?.length > 500 ? '...' : ''}",
+			"provider": {
+				"@type": "Organization",
+				"name": "${PUBLIC_COMPANY_NAME}",
+				"url": "${domain}",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "${domain}/assets/logo.png"
+				}
+			},
+			"serviceType": "${selectedServiceData?.title || formatServiceName(page.params.id)}",
+			"url": "${domain}/services/${page.params.id}",
+			"image": [
+				${selectedServiceData?.images?.map((img) => `"${img}"`).join(',')}
+			],
+			"offers": {
+				"@type": "Offer",
+				"availability": "https://schema.org/InStock",
+				"url": "${domain}/contact",
+				"seller": {
+					"@type": "Organization",
+					"name": "${PUBLIC_COMPANY_NAME}"
+				}
+			}
+		}
+	</script>
+	`}
+
+	{@html `
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+				${selectedServiceData?.faqItems
+					?.map(
+						(faq) => `
+					{
+						"@type": "Question",
+						"name": "${faq.question.replace(/"/g, '\\"')}",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "${faq.answer.replace(/"/g, '\\"')}"
+						}
+					}`
+					)
+					.join(',')}
+			]
+		}
+	</script>
+	`}
+
+	{@html `
+			<script type="application/ld+json">
+				{
+					"@context": "https://schema.org",
+					"@type": "HowTo",
+					"name": "How our ${selectedServiceData?.title || formatServiceName(page.params.id)} process works",
+					"description": "Step-by-step process for our ${selectedServiceData?.title || formatServiceName(page.params.id)} service",
+					"step": ${JSON.stringify(
+						selectedServiceData?.process?.map((step, index) => ({
+							'@type': 'HowToStep',
+							position: index + 1,
+							name: step.title,
+							text: step.description
+						}))
+					)}
+				}
+			</script>
+		`}
 </svelte:head>
 
 <main class="mt-24 *:py-10 lg:mt-16 *:lg:p-32">
 	<!-- Carousel -->
 	<section
-		class="flex flex-col overflow-hidden bg-black text-center text-2xl text-white lg:!pb-16 lg:text-4xl px-10"
+		class="flex flex-col overflow-hidden bg-black px-10 text-center text-2xl text-white lg:!pb-16 lg:text-4xl"
 	>
 		<h1 class="mb-8 font-[Cantarell] lg:mb-16">
 			<!-- Why {formatServiceName(page.params.id)}? -->
@@ -135,7 +218,10 @@
 				}}
 				class="inline-flex items-center justify-center text-2xl text-primary"
 			>
-				<PhoneCall class="*:*:stroke-primary mr-2" /> Get Free Quote <ArrowRight size="2rem" class="pt-2" />
+				<PhoneCall class="mr-2 *:*:stroke-primary" /> Get Free Quote <ArrowRight
+					size="2rem"
+					class="pt-2"
+				/>
 			</a>
 		</div>
 	</section>
@@ -248,7 +334,9 @@
 	</section>
 
 	<!-- Phone CTA -->
-	<section class="relative flex h-[60vh] w-full items-center justify-center bg-primary py-24 text-primary-foreground">
+	<section
+		class="relative flex h-[60vh] w-full items-center justify-center bg-primary py-24 text-primary-foreground"
+	>
 		<div class="container mx-auto my-auto text-center">
 			<h2 class="mb-4 text-4xl font-semibold">Ready to Transform Your Digital Presence?</h2>
 			<p class="mb-8 text-xl opacity-90">Call now for a free consultation and strategy session</p>
@@ -267,36 +355,43 @@
 
 	<!-- Process Timeline Section -->
 	{#if selectedServiceData.process && selectedServiceData.process.length > 0}
-		<section class="bg-primary font-[Cantarell] px-10 py-16 text-primary-foreground">
+		<section class="bg-primary px-10 py-16 font-[Cantarell] text-primary-foreground">
 			<div class="container mx-auto">
 				<h3 class="mb-12 text-center text-3xl font-semibold">Our Process</h3>
-				
+
 				<div class="relative mx-auto max-w-4xl">
 					<!-- Timeline Line -->
 					<div class="absolute left-[15px] top-0 h-full w-1 bg-white md:left-1/2 md:-ml-0.5"></div>
-					
+
 					<!-- Timeline Items -->
 					{#each selectedServiceData.process as step, i}
-						<div class="mb-8 flex flex-col md:mb-0 {i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}">
+						<div
+							class="mb-8 flex flex-col md:mb-0 {i % 2 === 0
+								? 'md:flex-row'
+								: 'md:flex-row-reverse'}"
+						>
 							<div class="ml-8 flex-1 md:ml-0 {i % 2 === 0 ? 'md:mr-8 md:text-right' : 'md:ml-8'}">
 								<div class="rounded-lg bg-white p-6 shadow-lg">
 									<h4 class="mb-2 text-xl font-bold text-primary">{step.title}</h4>
 									<p class="text-gray-700">{step.description}</p>
 								</div>
 							</div>
-							
-							<div class="absolute left-0 mt-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-white text-primary md:left-1/2 md:-ml-4">
+
+							<div
+								class="absolute left-0 mt-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-white text-primary md:left-1/2 md:-ml-4"
+							>
 								<span class="font-bold">{i + 1}</span>
 							</div>
-							
+
 							<div class="flex-1"></div>
 						</div>
 					{/each}
 				</div>
-				
+
 				{#if selectedServiceData.timeline}
 					<p class="mt-12 text-center text-lg">
-						<strong>Typical Timeline:</strong> {selectedServiceData.timeline}
+						<strong>Typical Timeline:</strong>
+						{selectedServiceData.timeline}
 					</p>
 				{/if}
 			</div>
@@ -305,7 +400,7 @@
 
 	<!-- FAQ Section -->
 	{#if selectedServiceData.faqItems && selectedServiceData.faqItems.length > 0}
-		<section class="bg-gray-100 font-[Cantarell] px-10">
+		<section class="bg-gray-100 px-10 font-[Cantarell]">
 			<h3 class="mb-8 text-center text-2xl font-semibold">Frequently Asked Questions</h3>
 			<Accordion.Root class="w-full">
 				{#each selectedServiceData.faqItems as faq}
