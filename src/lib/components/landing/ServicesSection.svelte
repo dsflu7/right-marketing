@@ -19,7 +19,7 @@
 </script>
 
 <section
-	class="flex scroll-mt-32 flex-col items-center gap-12 px-4 py-16 bg-gradient-to-b from-transparent to-primary/10 lg:gap-16"
+	class="flex scroll-mt-32 flex-col items-center gap-12 px-4 py-16 bg-gradient-to-b from-transparent to-darkgray/5 lg:gap-16 rounded-b-xl"
 	id="services"
 	bind:this={instance}
 >

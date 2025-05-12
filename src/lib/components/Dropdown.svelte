@@ -76,10 +76,10 @@
 			transition:fade={{ duration: 100 }}
 		>
 			<!-- {#if title}
-				<div class="px-4 py-2 text-sm font-medium text-gray-700 {headerClass}">
+				<div class="px-4 py-2 text-sm font-medium text-darkgray {headerClass}">
 					{title}
 				</div>
-				<hr class="mx-2 my-1 border-gray-200" />
+				<hr class="mx-2 my-1 border-darkgray/20" />
 			{/if} -->
 
 			<div class="py-1">

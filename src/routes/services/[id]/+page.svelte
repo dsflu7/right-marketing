@@ -245,13 +245,13 @@
 	{/if}
 
 	<!-- Service Description -->
-	<section class="bg-gray-50 py-16 font-[Cantarell]">
+	<section class="bg-darkgray/5 py-16 font-[Cantarell]">
 		<div class="container mx-auto">
 			<h3 class="mb-12 text-center text-3xl font-semibold">What We Offer</h3>
 
 			<div class="mb-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
 				<div class="space-y-6">
-					<p class="text-lg leading-relaxed text-gray-700">
+					<p class="text-lg leading-relaxed text-darkgray">
 						{selectedServiceData.description}
 					</p>
 					<Button variant="outline" href="/contact" class="mt-4">Get a Free Quote</Button>
@@ -373,7 +373,7 @@
 							<div class="ml-8 flex-1 md:ml-0 {i % 2 === 0 ? 'md:mr-8 md:text-right' : 'md:ml-8'}">
 								<div class="rounded-lg bg-white p-6 shadow-lg">
 									<h4 class="mb-2 text-xl font-bold text-primary">{step.title}</h4>
-									<p class="text-gray-700">{step.description}</p>
+									<p class="text-darkgray">{step.description}</p>
 								</div>
 							</div>
 
@@ -400,7 +400,7 @@
 
 	<!-- FAQ Section -->
 	{#if selectedServiceData.faqItems && selectedServiceData.faqItems.length > 0}
-		<section class="bg-gray-100 px-10 font-[Cantarell]">
+		<section class="bg-darkgray/5 px-10 font-[Cantarell]">
 			<h3 class="mb-8 text-center text-2xl font-semibold">Frequently Asked Questions</h3>
 			<Accordion.Root class="w-full">
 				{#each selectedServiceData.faqItems as faq}

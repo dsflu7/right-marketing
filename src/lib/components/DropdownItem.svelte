@@ -10,7 +10,7 @@
 </script>
 
 <button
-	class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 {disabled
+	class="block w-full px-4 py-2 text-left text-sm text-darkgray hover:bg-darkgray/5 {disabled
 		? 'cursor-not-allowed opacity-50'
 		: 'cursor-pointer'} {className}"
 	{disabled}

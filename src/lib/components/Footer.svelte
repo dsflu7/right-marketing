@@ -16,7 +16,7 @@
 </script>
 
 <footer
-	class="flex h-[70vh] flex-col items-center gap-8 bg-foreground px-[6%] pb-4 pt-16 text-muted"
+	class="flex h-[70vh] flex-col items-center gap-8 bg-foreground px-[6%] pb-4 pt-16 text-secondary"
 >
 	<div
 		class="flex w-full flex-row justify-between *:*:underline *:*:transition-all *:*:duration-300 *:*:ease-in-out hover:*:*:text-[#FFFFFF99]"
@@ -43,7 +43,7 @@
 		/> -->
 
 	<div
-		class="flex w-full flex-wrap justify-evenly gap-4 *:transition-all *:duration-300 *:ease-in-out lg:justify-around"
+		class="flex w-full flex-wrap justify-evenly gap-4 *:transition-all *:duration-300 *:ease-in-out lg:justify-around "
 	>
 		{#each menuItems as item, i}
 			<a
@@ -57,7 +57,7 @@
 				aria-label={item.label === 'FREE QUOTES'
 					? 'Open quote request form'
 					: `Go to ${item.label.toLowerCase()} page`}
-				class="whitespace-normal break-keep font-[Cantarell] text-sm font-bold text-muted hover:text-[#FFFFFF99] lg:text-lg"
+				class="whitespace-normal break-keep font-[Cantarell] text-sm font-bold text-secondary hover:text-[#FFFFFF99] lg:text-lg"
 			>
 				{item.label}
 			</a>

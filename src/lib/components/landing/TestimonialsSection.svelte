@@ -88,7 +88,7 @@
 						<span
 							class="block h-3 w-3 rounded-full transition-all duration-300 {i === currentReviewSlide
 								? 'bg-primary scale-125'
-								: 'bg-gray-300'}"
+								: 'bg-darkgray/30'}"
 						></span>
 					</button>
 				{/each}

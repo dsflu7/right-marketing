@@ -47,7 +47,8 @@ const config: Config = {
 				card: {
 					DEFAULT: "hsl(var(--card) / <alpha-value>)",
 					foreground: "hsl(var(--card-foreground) / <alpha-value>)"
-				}
+				},
+				darkgray: "#1a191d", // Direct access to the dark gray color
 			},
 			borderRadius: {
 				lg: "var(--radius)",

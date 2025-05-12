@@ -15,7 +15,7 @@
 					class="h-12 w-12 rounded-full"
 				/>
 			{:else}
-				<div class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-400 text-white">
+				<div class="flex h-12 w-12 items-center justify-center rounded-full bg-darkgray text-white">
 					{review.authorAttribution.displayName.charAt(0)}
 				</div>
 			{/if}
@@ -24,7 +24,7 @@
 			<div class="font-semibold overflow-clip whitespace-nowrap">{review.authorAttribution.displayName}</div>
 			<div class="text-xs opacity-75">{review.relativePublishTimeDescription}</div>
 			<div class="mt-1 text-yellow-400">
-				{'★'.repeat(review.rating)}<span class="text-gray-600">{'★'.repeat(5 - review.rating)}</span
+				{'★'.repeat(review.rating)}<span class="text-darkgray/60">{'★'.repeat(5 - review.rating)}</span
 				>
 			</div>
 			<a
