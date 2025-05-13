@@ -199,9 +199,10 @@
 		class="relative flex h-[90vh] w-full flex-row justify-evenly gap-0 overflow-hidden object-cover text-background"
 	>
 		<!-- Water-like gradient background with noise texture -->
-		<div class="absolute inset-0 bg-gradient-to-b from-primary via-primary/90 to-primary-foreground/70 overflow-hidden">
-			<div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary-foreground/40 to-primary/90"></div>
-			<div class="absolute inset-0 bg-noise opacity-15"></div>
+		<div class="absolute inset-0 overflow-hidden">
+			<img src="/assets/Gradient.png" alt="" class="h-full w-full object-cover" />
+			<!-- <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary-foreground/40 to-primary/90"></div>
+			<div class="absolute inset-0 bg-noise opacity-15"></div> -->
 		</div>
 		
 		<HeroSection {scrollToServices} />

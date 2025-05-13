@@ -19,7 +19,7 @@
 </script>
 
 <section
-	class="flex scroll-mt-32 flex-col items-center gap-12 px-4 py-16 bg-gradient-to-b from-transparent to-darkgray/5 lg:gap-16 rounded-b-xl"
+	class="flex scroll-mt-32 flex-col items-center gap-12 px-4 py-16 bg-gradient-to-b from-transparent to-primary/80 grain-overlay lg:gap-16 rounded-b-xl"
 	id="services"
 	bind:this={instance}
 >
@@ -29,7 +29,7 @@
 		<p class="text-lg text-muted-foreground mb-8">We offer an integrated approach that combines strategy, creativity, and technology to help your business thrive in the digital landscape.</p>
 	</div>
 
-	<div class="grid w-full items-stretch gap-6 lg:grid-cols-3 max-w-6xl">
+	<div class="grid w-full items-stretch gap-6 lg:grid-cols-3 max-w-6xl 2xl:max-w-[90rem]">
 		{#each Object.keys(serviceData) as serviceKey, i}
 			{#if !$isMobile}
 				{@render desktopServiceBlock(serviceKey, i)}

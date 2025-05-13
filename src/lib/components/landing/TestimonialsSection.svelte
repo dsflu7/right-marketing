@@ -42,7 +42,7 @@
 </script>
 
 <section
-	class="flex w-full flex-col gap-8 overflow-hidden py-16 text-center lg:gap-10 bg-gradient-to-b from-transparent to-primary/5"
+	class="flex w-full flex-col gap-8 overflow-hidden py-16 text-center lg:gap-10 bg-gradient-to-b from-transparent to-primary/5 grain-overlay"
 	bind:this={instance}
 >
 	<div class="max-w-3xl mx-auto">

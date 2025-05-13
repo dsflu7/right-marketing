@@ -9,7 +9,7 @@
 	const domain = $derived(`${page.url.protocol}//${page.url.host}`);
 </script>
 
-<section class="container mx-auto max-w-6xl flex flex-col items-center gap-8 px-4 py-16 lg:flex-row bg-gradient-to-b from-transparent to-darkgray/5 rounded-xl">
+<section class="container mx-auto max-w-6xl 2xl:max-w-[90rem] flex flex-col items-center gap-8 px-4 py-16 lg:flex-row  rounded-xl">
 	<div class="w-full lg:w-1/2">
 		<Image
 			url="/assets/landing/team.jpg"

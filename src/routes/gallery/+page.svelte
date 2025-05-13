@@ -218,7 +218,7 @@
 	</Dialog.Content>
 </Dialog.Root>
 
-<main class="mt-28 flex h-full flex-col gap-12 p-[6vw] px-4 font-[Cantarell] lg:mt-16 lg:gap-16 max-w-6xl mx-auto">
+<main class="mt-28 flex h-full flex-col gap-12 p-[6vw] px-4 font-[Cantarell] lg:mt-16 lg:gap-16 max-w-6xl 2xl:max-w-[90rem] mx-auto">
 	<section class="flex w-full flex-col items-center gap-6 px-4 py-8">
 		<h1
 			class="mx-auto max-w-4xl text-center text-2xl font-semibold leading-tight md:text-5xl lg:text-4xl"
@@ -232,7 +232,7 @@
 	</section>
 
 	<!-- Search and filters -->
-	<section class="mx-auto w-full max-w-6xl">
+	<section class="mx-auto w-full max-w-6xl 2xl:max-w-[90rem]">
 		<div class="mb-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 			<div class="w-full lg:w-1/3">
 				<Input
