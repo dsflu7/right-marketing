@@ -43,13 +43,12 @@
 			<Button 
 				variant="outline" 
 				class="bg-white/10 text-white border-white/40 hover:bg-white/20"
-				onclick={() => goto('/success-stories')}
+				onclick={() => goto('/gallery')}
 			>
 				<a
-					href={`${domain}/success-stories`}
+					href={`${domain}/gallery`}
 					onclick={(e) => {
 						e.preventDefault();
-						goto('/success-stories');
 					}}
 				>
 					See Success Stories
@@ -64,7 +63,6 @@
 					href={`${domain}/contact`}
 					onclick={(e) => {
 						e.preventDefault();
-						goto('/contact');
 					}}
 				>
 					Request Proposal
