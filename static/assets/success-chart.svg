@@ -1,0 +1,43 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="successGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#059669;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:0.4" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Bar chart representing growth -->
+  <rect x="100" y="450" width="60" height="100" fill="#10b981" opacity="0.7" filter="url(#shadow)"/>
+  <rect x="200" y="400" width="60" height="150" fill="#059669" opacity="0.8" filter="url(#shadow)"/>
+  <rect x="300" y="300" width="60" height="250" fill="#047857" opacity="0.9" filter="url(#shadow)"/>
+  <rect x="400" y="200" width="60" height="350" fill="#10b981" filter="url(#shadow)"/>
+  <rect x="500" y="150" width="60" height="400" fill="#059669" filter="url(#shadow)"/>
+  
+  <!-- Success indicators -->
+  <circle cx="130" cy="430" r="8" fill="#ffffff"/>
+  <path d="M125,430 L129,434 L135,428" stroke="#10b981" stroke-width="2" fill="none"/>
+  
+  <circle cx="230" cy="380" r="8" fill="#ffffff"/>
+  <path d="M225,380 L229,384 L235,378" stroke="#059669" stroke-width="2" fill="none"/>
+  
+  <circle cx="330" cy="280" r="8" fill="#ffffff"/>
+  <path d="M325,280 L329,284 L335,278" stroke="#047857" stroke-width="2" fill="none"/>
+  
+  <circle cx="430" cy="180" r="8" fill="#ffffff"/>
+  <path d="M425,180 L429,184 L435,178" stroke="#10b981" stroke-width="2" fill="none"/>
+  
+  <circle cx="530" cy="130" r="8" fill="#ffffff"/>
+  <path d="M525,130 L529,134 L535,128" stroke="#059669" stroke-width="2" fill="none"/>
+  
+  <!-- Trending arrow -->
+  <path d="M80,500 Q300,400 550,100" stroke="#10b981" stroke-width="3" fill="none" stroke-dasharray="10,5"/>
+  <path d="M530,110 L550,100 L540,120" stroke="#10b981" stroke-width="3" fill="none"/>
+  
+  <!-- Background geometric shapes -->
+  <polygon points="650,50 700,100 650,150 600,100" fill="url(#successGradient)" opacity="0.3"/>
+  <circle cx="700" cy="400" r="40" fill="url(#successGradient)" opacity="0.2"/>
+</svg>

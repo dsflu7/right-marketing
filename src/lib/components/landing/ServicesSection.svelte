@@ -3,7 +3,6 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import * as Accordion from '$lib/components/ui/accordion';
-	import Image from '$lib/components/Image.svelte';
 	import { serviceData } from '$lib/data/services';
 	import { isMobile } from '$lib/utils/stores';
 	import { PUBLIC_COMPANY_NAME } from '$env/static/public';
@@ -19,17 +18,28 @@
 </script>
 
 <section
-	class="flex scroll-mt-32 flex-col items-center gap-12 px-4 py-16 bg-gradient-to-b from-transparent to-primary/80 grain-overlay lg:gap-16 rounded-b-xl"
+	class="flex scroll-mt-32 flex-col items-center gap-12 px-4 py-16 bg-gradient-to-b from-transparent to-primary/80 grain-overlay relative overflow-hidden lg:gap-16 rounded-b-xl"
 	id="services"
 	bind:this={instance}
 >
-	<div class="text-center max-w-3xl mx-auto">
+	<!-- Background decorative elements -->
+	<div class="absolute top-10 left-10 w-48 h-32 opacity-5 hidden lg:block">
+		<img src="/assets/video-marketing-graphic.svg" alt="" class="w-full h-full" />
+	</div>
+	<div class="absolute bottom-20 right-20 w-40 h-24 opacity-5 hidden lg:block">
+		<img src="/assets/automation-workflow.svg" alt="" class="w-full h-full" />
+	</div>
+	<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-48 opacity-3">
+		<img src="/assets/network-graphic.svg" alt="" class="w-full h-full" />
+	</div>
+	
+	<div class="text-center max-w-3xl mx-auto relative z-10">
 		<h2 class="text-center text-4xl md:text-5xl font-semibold leading-tight">Complete Marketing Solutions</h2>
 		<div class="my-4 h-1 w-24 rounded-full bg-primary mx-auto"></div>
 		<p class="text-lg text-muted-foreground mb-8">We offer an integrated approach that combines strategy, creativity, and technology to help your business thrive in the digital landscape.</p>
 	</div>
 
-	<div class="grid w-full items-stretch gap-6 lg:grid-cols-3 max-w-6xl 2xl:max-w-[90rem]">
+	<div class="grid w-full items-stretch gap-6 lg:grid-cols-3 max-w-6xl 2xl:max-w-[90rem] relative z-10">
 		{#each Object.keys(serviceData) as serviceKey, i}
 			{#if !$isMobile}
 				{@render desktopServiceBlock(serviceKey, i)}
@@ -39,7 +49,7 @@
 		{/each}
 	</div>
 	
-	<div class="mt-12 flex flex-col sm:flex-row gap-4 items-center">
+	<div class="mt-12 flex flex-col sm:flex-row gap-4 items-center relative z-10">
 		<Button onclick={() => goto('/services')} size="lg" class="min-h-[44px] min-w-[44px]">
 			<a
 				href={`${domain}/services`}
@@ -94,17 +104,51 @@
 		</div>
 
 		<div
-			class="aspect-video w-full overflow-hidden rounded-lg"
+			class="aspect-video w-full overflow-hidden rounded-lg relative group bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20"
 			aria-label={`Learn more about ${service.title}`}
 		>
-			<Image
-				url={`/assets/services/${serviceKey}/1.webp`}
-				description={`${service.title} service by ${PUBLIC_COMPANY_NAME}`}
-				class="h-full w-full object-cover transition-all duration-500 ease-in-out hover:scale-110"
-				width="480"
-				height="270"
-				quality={75}
-			/>
+			<!-- Main SVG graphic background -->
+			<div class="absolute inset-0 flex items-center justify-center p-8">
+				{#if serviceKey === 'video-production'}
+					<img src="/assets/video-marketing-graphic.svg" alt={`${service.title} illustration`} class="w-full h-full object-contain transition-all duration-500 ease-in-out group-hover:scale-110 opacity-80 group-hover:opacity-100" />
+				{:else if serviceKey === 'ad-campaigns'}
+					<img src="/assets/success-chart.svg" alt={`${service.title} illustration`} class="w-full h-full object-contain transition-all duration-500 ease-in-out group-hover:scale-110 opacity-80 group-hover:opacity-100" />
+				{:else if serviceKey === 'automation'}
+					<img src="/assets/automation-workflow.svg" alt={`${service.title} illustration`} class="w-full h-full object-contain transition-all duration-500 ease-in-out group-hover:scale-110 opacity-80 group-hover:opacity-100" />
+				{:else}
+					<img src="/assets/network-graphic.svg" alt={`${service.title} illustration`} class="w-full h-full object-contain transition-all duration-500 ease-in-out group-hover:scale-110 opacity-80 group-hover:opacity-100" />
+				{/if}
+			</div>
+			
+			<!-- Decorative pattern overlay -->
+			<div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+				<img src="/assets/modern-pattern.svg" alt="" class="w-full h-full object-cover" />
+			</div>
+			
+			<!-- Floating animation elements -->
+			<div class="absolute top-2 right-2 w-6 h-6 opacity-0 group-hover:opacity-40 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+				<img src="/assets/floating-dots.svg" alt="" class="w-full h-full" />
+			</div>
+			
+			<!-- Growth indicator in corner -->
+			<div class="absolute bottom-2 right-2 w-8 h-8 opacity-0 group-hover:opacity-50 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+				<img src="/assets/growth-circle.svg" alt="" class="w-full h-full" />
+			</div>
+			
+			<!-- Hover effect: Show service category badge -->
+			<div class="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+				<span class="px-2 py-1 bg-primary text-white text-xs rounded-full font-medium shadow-lg">
+					{#if serviceKey === 'video-production'}
+						Video & Content
+					{:else if serviceKey === 'ad-campaigns'}
+						Digital Advertising
+					{:else if serviceKey === 'automation'}
+						Automation Tools
+					{:else}
+						SEO & Analytics
+					{/if}
+				</span>
+			</div>
 		</div>
 
 		<p class="flex-grow font-[Cantarell] text-muted-foreground">{service.shortDescription}</p>
@@ -172,15 +216,65 @@
 			</Accordion.Trigger>
 			<Accordion.Content class="rounded-b-lg bg-white px-4 pb-4 pt-2">
 				<div class="flex flex-col gap-3">
-					<div class="aspect-video h-48 max-h-48 w-full overflow-hidden rounded-lg">
-						<Image
-							url={`/assets/services/${serviceKey}/1.webp`}
-							description={`${service.title} service by ${PUBLIC_COMPANY_NAME}`}
-							class="h-full w-full object-cover"
-							width="400"
-							height="225"
-							quality={60}
-						/>
+					<div class="aspect-video h-48 max-h-48 w-full overflow-hidden rounded-lg relative group bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20">
+						<!-- Main SVG graphic -->
+						<div class="absolute inset-0 flex items-center justify-center p-6">
+							{#if serviceKey === 'video-production'}
+								<img src="/assets/video-marketing-graphic.svg" alt={`${service.title} illustration`} class="w-full h-full object-contain transition-all duration-300 ease-in-out group-hover:scale-105 opacity-80" />
+							{:else if serviceKey === 'ad-campaigns'}
+								<img src="/assets/success-chart.svg" alt={`${service.title} illustration`} class="w-full h-full object-contain transition-all duration-300 ease-in-out group-hover:scale-105 opacity-80" />
+							{:else if serviceKey === 'automation'}
+								<img src="/assets/automation-workflow.svg" alt={`${service.title} illustration`} class="w-full h-full object-contain transition-all duration-300 ease-in-out group-hover:scale-105 opacity-80" />
+							{:else}
+								<img src="/assets/network-graphic.svg" alt={`${service.title} illustration`} class="w-full h-full object-contain transition-all duration-300 ease-in-out group-hover:scale-105 opacity-80" />
+							{/if}
+						</div>
+						
+						<!-- Subtle background pattern -->
+						<div class="absolute inset-0 opacity-3">
+							<img src="/assets/modern-pattern.svg" alt="" class="w-full h-full object-cover" />
+						</div>
+						
+						<!-- Service icon overlay for mobile -->
+						<div class="absolute top-2 right-2 w-6 h-6 bg-white/90 rounded-full p-1 shadow-sm">
+							{#if serviceKey === 'video-production'}
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+								</svg>
+							{:else if serviceKey === 'ad-campaigns'}
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+								</svg>
+							{:else if serviceKey === 'automation'}
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+								</svg>
+							{:else}
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+								</svg>
+							{/if}
+						</div>
+						
+						<!-- Category badge for mobile -->
+						<div class="absolute bottom-2 left-2">
+							<span class="px-2 py-1 bg-primary/90 text-white text-xs rounded-full font-medium shadow-sm">
+								{#if serviceKey === 'video-production'}
+									Video
+								{:else if serviceKey === 'ad-campaigns'}
+									Ads
+								{:else if serviceKey === 'automation'}
+									Automation
+								{:else}
+									SEO
+								{/if}
+							</span>
+						</div>
+						
+						<!-- Growth indicator -->
+						<div class="absolute bottom-2 right-2 w-4 h-4 opacity-30">
+							<img src="/assets/growth-circle.svg" alt="" class="w-full h-full" />
+						</div>
 					</div>
 					<p class="py-1 font-[Cantarell] text-sm text-muted-foreground">{service.shortDescription}</p>
 					

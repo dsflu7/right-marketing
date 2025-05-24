@@ -1,0 +1,24 @@
+<svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dividerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0" />
+      <stop offset="20%" style="stop-color:#3b82f6;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+      <stop offset="80%" style="stop-color:#3b82f6;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main divider line -->
+  <line x1="0" y1="30" x2="1200" y2="30" stroke="url(#dividerGradient)" stroke-width="2"/>
+  
+  <!-- Central decorative element -->
+  <circle cx="600" cy="30" r="8" fill="#3b82f6" opacity="0.6"/>
+  <circle cx="600" cy="30" r="4" fill="#ffffff"/>
+  
+  <!-- Side accent dots -->
+  <circle cx="400" cy="30" r="3" fill="#3b82f6" opacity="0.4"/>
+  <circle cx="800" cy="30" r="3" fill="#3b82f6" opacity="0.4"/>
+  <circle cx="300" cy="30" r="2" fill="#3b82f6" opacity="0.3"/>
+  <circle cx="900" cy="30" r="2" fill="#3b82f6" opacity="0.3"/>
+</svg>

@@ -10,9 +10,19 @@
 	const domain = $derived(`${page.url.protocol}//${page.url.host}`);
 </script>
 
-<section class="relative flex h-[65vh] w-full items-center justify-center text-secondary">
+<section class="relative flex h-[65vh] w-full items-center justify-center text-secondary overflow-hidden">
 	<div class="absolute inset-0 z-0 h-full w-full">
 		<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary">&nbsp;</div>
+		<!-- Add decorative graphics -->
+		<div class="absolute top-10 right-10 w-32 h-32 opacity-10">
+			<img src="/assets/success-chart.svg" alt="" class="w-full h-full" />
+		</div>
+		<div class="absolute bottom-10 left-10 w-24 h-24 opacity-10">
+			<img src="/assets/floating-dots.svg" alt="" class="w-full h-full" />
+		</div>
+		<div class="absolute top-1/2 left-20 w-16 h-16 opacity-5">
+			<img src="/assets/growth-circle.svg" alt="" class="w-full h-full" />
+		</div>
 	</div>
 	<div class="container relative z-10 mx-auto my-auto text-center">
 		<h2 class="mb-4 text-4xl font-semibold">Ready to Transform Your Marketing?</h2>

@@ -9,17 +9,26 @@
 	const domain = $derived(`${page.url.protocol}//${page.url.host}`);
 </script>
 
-<section class="container mx-auto max-w-6xl 2xl:max-w-[90rem] flex flex-col items-center gap-8 px-4 py-16 lg:flex-row  rounded-xl">
-	<div class="w-full lg:w-1/2">
-		<Image
+<section class="container mx-auto max-w-6xl 2xl:max-w-[90rem] flex flex-col items-center gap-8 px-4 py-16 lg:flex-row rounded-xl relative overflow-hidden">
+	<!-- Background decorative element -->
+	<div class="absolute top-0 right-0 w-72 h-48 opacity-5 hidden lg:block">
+		<img src="/assets/testimonials-graphic.svg" alt="" class="w-full h-full" />
+	</div>
+	<div class="absolute bottom-10 left-10 w-32 h-32 opacity-5">
+		<img src="/assets/modern-pattern.svg" alt="" class="w-full h-full" />
+	</div>
+	
+	<div class="w-full lg:w-1/2 relative z-10">
+		<img src="/assets/landing/undraw_predictive-analytics_6vi1.svg" class="w-full h-[60vh] rounded-lg object-contain" alt="">
+		<!-- <Image
 			url="/assets/landing/team.jpg"
 			description="The Right Marketing team of digital marketing experts"
 			class="h-[60vh] w-full rounded-lg object-cover shadow-xl"
 			width="800"
 			height="600"
-		/>
+		/> -->
 	</div>
-	<div class="w-full space-y-6 lg:w-1/2 lg:pl-8">
+	<div class="w-full space-y-6 lg:w-1/2 lg:pl-8 relative z-10">
 		<h2 class="text-3xl font-semibold">
 			{aboutContent.title}
 		</h2>
