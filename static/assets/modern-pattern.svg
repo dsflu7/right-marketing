@@ -1,0 +1,36 @@
+<svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="modernGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#764ba2;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:0.1" />
+    </linearGradient>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#3b82f6" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Grid background -->
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+  
+  <!-- Flowing geometric shapes -->
+  <path d="M0,300 Q250,200 500,250 T1000,200 L1000,400 L0,400 Z" fill="url(#modernGradient)"/>
+  <path d="M0,350 Q200,250 400,300 T800,280 L1000,320 L1000,400 L0,400 Z" fill="url(#modernGradient)" opacity="0.6"/>
+  
+  <!-- Floating geometric elements -->
+  <circle cx="150" cy="100" r="20" fill="#3b82f6" opacity="0.1">
+    <animate attributeName="cy" values="100;80;100" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <polygon points="300,150 320,130 340,150 320,170" fill="#8b5cf6" opacity="0.1">
+    <animateTransform attributeName="transform" type="rotate" values="0 320 150;360 320 150" dur="8s" repeatCount="indefinite"/>
+  </polygon>
+  <rect x="500" y="80" width="30" height="30" fill="#10b981" opacity="0.1" transform="rotate(45 515 95)">
+    <animateTransform attributeName="transform" type="rotate" values="45 515 95;405 515 95" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <circle cx="700" cy="120" r="15" fill="#f59e0b" opacity="0.1">
+    <animate attributeName="cy" values="120;100;120" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <polygon points="850,80 870,60 890,80 870,100" fill="#ef4444" opacity="0.1">
+    <animateTransform attributeName="transform" type="rotate" values="0 870 80;-360 870 80" dur="7s" repeatCount="indefinite"/>
+  </polygon>
+</svg>

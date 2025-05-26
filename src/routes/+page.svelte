@@ -198,21 +198,46 @@
 	<section
 		class="relative flex h-[90vh] w-full flex-row justify-evenly gap-0 overflow-hidden object-cover text-background"
 	>
-		<!-- Water-like gradient background with noise texture -->
+		<!-- Enhanced gradient background with decorative elements -->
 		<div class="absolute inset-0 overflow-hidden">
 			<img src="/assets/Gradient.png" alt="" class="h-full w-full object-cover" />
-			<!-- <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary-foreground/40 to-primary/90"></div>
-			<div class="absolute inset-0 bg-noise opacity-15"></div> -->
+			<!-- Floating dots animation -->
+			<div class="absolute top-10 right-10 w-32 h-32 opacity-30">
+				<img src="/assets/floating-dots.svg" alt="" class="w-full h-full" />
+			</div>
+			<div class="absolute bottom-20 left-20 w-24 h-24 opacity-20">
+				<img src="/assets/floating-dots.svg" alt="" class="w-full h-full" />
+			</div>
+			<!-- Growth circle graphic -->
+			<div class="absolute top-1/4 left-10 w-40 h-40 opacity-10">
+				<img src="/assets/growth-circle.svg" alt="" class="w-full h-full" />
+			</div>
 		</div>
 		
 		<HeroSection {scrollToServices} />
 	</section>
 
 	<!-- Intro Section -->
-	<IntroSection />
+	<section class="relative">
+		<!-- Add decorative wave at the top -->
+		<div class="absolute top-0 left-0 w-full h-16 opacity-20">
+			<img src="/assets/decorative-wave.svg" alt="" class="w-full h-full" />
+		</div>
+		<IntroSection />
+	</section>
 
 	<!-- About Section -->
-	<AboutSection />
+	<section class="relative">
+		<!-- Add network graphic as decoration -->
+		<div class="absolute top-10 right-10 w-64 h-48 opacity-5 hidden lg:block">
+			<img src="/assets/network-graphic.svg" alt="" class="w-full h-full" />
+		</div>
+		<AboutSection />
+		<!-- Section divider -->
+		<div class="w-full h-8 flex justify-center items-center py-8">
+			<img src="/assets/section-divider.svg" alt="" class="w-full max-w-4xl h-full" />
+		</div>
+	</section>
 
 	<!-- Services Section -->
 	<ServicesSection bind:instance={servicesSection} />
@@ -221,33 +246,23 @@
 	<CTASection />
 
 	<!-- Testimonials Section -->
-	<TestimonialsSection
-		bind:instance={reviewsSection}
-		{reviews}
-		{rating}
-		{userRatingCount}
-		{isLoadingReviews}
-		{reviewsLoaded}
-	/>
+	<section class="relative">
+		<!-- Add success chart graphic -->
+		<div class="absolute top-20 left-10 w-48 h-36 opacity-5 hidden lg:block">
+			<img src="/assets/success-chart.svg" alt="" class="w-full h-full" />
+		</div>
+		<TestimonialsSection
+			bind:instance={reviewsSection}
+			{reviews}
+			{rating}
+			{userRatingCount}
+			{isLoadingReviews}
+			{reviewsLoaded}
+		/>
+	</section>
 </main>
 
 <!-- FAQ Section -->
 <FAQSection />
 
-<style>
-	.text-shadow {
-		text-shadow: 2px 3px 9px rgba(0, 0, 0, 0.59);
-	}
 
-	.shadow-text {
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-	}
-	
-	.bg-noise {
-		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-		background-repeat: repeat;
-		background-size: 250px 250px;
-		mix-blend-mode: soft-light;
-	}
-
-</style>

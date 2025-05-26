@@ -16,78 +16,90 @@ export interface ClientProject {
 // Sample client projects data
 export const clientProjects: ClientProject[] = [
   {
-    id: 'acme-corp',
-    name: 'ACME Corporation',
-    logo: '/assets/clients/acme-logo.png',
-    description: 'A complete rebrand and web presence overhaul for a local manufacturing business, resulting in 43% increased lead generation within the first quarter.',
-    websiteGif: '/assets/clients/acme-website.gif',
+    id: 'splash-n-shine',
+    name: 'Splash n Shine',
+    logo: '/assets/clients/splash-n-shine-logo.png',
+    description: 'Comprehensive digital marketing, automation, and SEO services for this car wash business, resulting in increased bookings and local brand recognition.',
     links: {
-      website: 'https://acmecorp.example.com',
-      instagram: 'https://instagram.com/acmecorp',
-      facebook: 'https://facebook.com/acmecorp',
+      website: 'https://www.splashnshine.ca/',
+      instagram: 'https://www.instagram.com/splashnshine.ca/',
+      facebook: 'https://www.facebook.com/105341482673651',
+      // TikTok is not in the interface, but can be added if needed
     },
-    tags: ['manufacturing', 'website-design', 'branding', 'lead-generation']
+    tags: [
+      'video-production',
+      'ad-campaigns',
+      'automation',
+      'website-seo',
+      'social-media-marketing',
+      'local-seo'
+    ]
   },
   {
-    id: 'sunshine-cafe',
-    name: 'Sunshine Café',
-    logo: '/assets/clients/sunshine-logo.png',
-    description: 'Created a digital marketing strategy for this local café, including social media management and targeted local ads that increased foot traffic by 32%.',
-    websiteGif: '/assets/clients/sunshine-website.gif',
+    id: 'luxury-floors',
+    name: 'Luxury Floors',
+    logo: '/assets/clients/luxury-floors-logo.png',
+    description: 'Delivered a full suite of marketing and automation services, boosting online presence and lead generation for this premium flooring company.',
     links: {
-      website: 'https://sunshinecafe.example.com',
-      instagram: 'https://instagram.com/sunshinecafe',
-      facebook: 'https://facebook.com/sunshinecafe',
+      website: 'https://www.luxuryfloors.ca/',
+      instagram: 'https://www.instagram.com/luxuryfloors.ca/'
     },
-    tags: ['food-service', 'local-business', 'social-media', 'advertising']
+    tags: [
+      'video-production',
+      'ad-campaigns',
+      'automation',
+      'website-seo',
+      'social-media-marketing',
+      'local-seo'
+    ]
   },
   {
-    id: 'tech-innovations',
-    name: 'Tech Innovations',
-    logo: '/assets/clients/tech-logo.png',
-    description: 'Developed a content marketing strategy for this tech startup that positioned them as thought leaders in their industry and drove a 65% increase in qualified B2B leads.',
-    websiteGif: '/assets/clients/tech-website.gif',
+    id: 'just-cleaning',
+    name: 'Just Cleaning',
+    logo: '/assets/clients/just-cleaning-logo.png',
+    description: 'Implemented end-to-end marketing, automation, and SEO strategies for this cleaning service, resulting in higher customer engagement and bookings.',
     links: {
-      website: 'https://techinnovations.example.com',
-      instagram: 'https://instagram.com/techinnovations',
+      website: 'https://justcleanings.ca/'
     },
-    tags: ['tech', 'b2b', 'content-marketing', 'lead-generation']
+    tags: [
+      'video-production',
+      'ad-campaigns',
+      'automation',
+      // 'website-seo',
+      'social-media-marketing',
+      'local-seo'
+    ]
   },
   {
-    id: 'green-living',
-    name: 'Green Living',
-    logo: '/assets/clients/green-logo.png',
-    description: 'Executed an e-commerce strategy for this sustainable products retailer, including SEO optimization and email campaigns that boosted online sales by 78%.',
+    id: 'moonlight-lighting',
+    name: 'Moonlight Lighting',
+    logo: '/assets/clients/moonlight-lighting-logo.png',
+    description: 'Provided a complete marketing overhaul, including automation and SEO, for this lighting solutions provider, enhancing their digital footprint and sales.',
     links: {
-      website: 'https://greenliving.example.com',
-      facebook: 'https://facebook.com/greenliving',
+      website: 'https://moonlightlighting.ca/',
+      instagram: 'https://instagram.com/moonlightlighting.ca'
     },
-    tags: ['e-commerce', 'retail', 'sustainability', 'email-marketing', 'seo']
+    tags: [
+      'video-production',
+      'ad-campaigns',
+      'automation',
+      'website-seo',
+      'social-media-marketing',
+      'local-seo'
+    ]
   },
   {
-    id: 'fitness-first',
-    name: 'Fitness First',
-    logo: '/assets/clients/fitness-logo.png',
-    description: 'Created video marketing content and membership campaigns for this fitness center, resulting in a 50% increase in new memberships.',
-    websiteGif: '/assets/clients/fitness-website.gif',
+    id: 'mini-moving-daily',
+    name: 'Mini Moving Daily',
+    logo: '/assets/clients/mini-moving-daily-logo.png',
+    description: 'Executed SEO and select marketing services for this moving company, resulting in improved online visibility and customer acquisition.',
     links: {
-      website: 'https://fitnessfirst.example.com',
-      instagram: 'https://instagram.com/fitnessfirst',
-      facebook: 'https://facebook.com/fitnessfirst',
+      website: 'https://minimovingdaily.com/'
     },
-    tags: ['fitness', 'video-production', 'membership', 'local-business']
-  },
-  {
-    id: 'legal-eagles',
-    name: 'Legal Eagles',
-    logo: '/assets/clients/legal-logo.png',
-    description: 'Developed a professional online presence and content strategy for this law firm, resulting in a 40% increase in client consultations.',
-    links: {
-      website: 'https://legaleagles.example.com',
-    },
-    tags: ['legal', 'professional-services', 'content-strategy', 'local-business']
+    tags: [
+      'website-seo',
+      'ad-campaigns', // some marketing
+      'local-seo'
+    ]
   }
 ];
-
-// Note: Replace the placeholder image paths with actual paths when assets are available.
-// These sample entries can be replaced with actual client data.

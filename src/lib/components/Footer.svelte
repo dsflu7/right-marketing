@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { PUBLIC_COMPANY_NAME, PUBLIC_DOMAIN } from '$env/static/public';
 	import { contactInfo } from '$lib/data/locations';
 	import MainLogo from '$lib/icons/MainLogo.svelte';
@@ -22,13 +23,13 @@
 		class="flex w-full flex-row justify-between *:*:underline *:*:transition-all *:*:duration-300 *:*:ease-in-out hover:*:*:text-[#FFFFFF99]"
 	>
 		<div class="">
-			<button onclick={() => ($quoteDialogOpen = true)} aria-label="Open quote request form"
+			<button onclick={() => goto('/contact')} aria-label="Open quote request form"
 				>Book A Call</button
 			>
 		</div>
 		<div class="flex gap-2 lg:gap-8">
 			<a href={contactInfo.instagram}>Instagram</a>
-			<a href={contactInfo.tiktok}>TikTok</a>
+			<!-- <a href={contactInfo.tiktok}>TikTok</a> -->
 			<a href={contactInfo.facebook}>Facebook</a>
 		</div>
 	</div>

@@ -1,0 +1,59 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="marketingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#c4b5fd;stop-opacity:0.4" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Video camera icon -->
+  <rect x="100" y="150" width="120" height="80" rx="10" fill="url(#marketingGradient)" filter="url(#glow)"/>
+  <circle cx="160" cy="190" r="25" fill="#ffffff" opacity="0.9"/>
+  <circle cx="160" cy="190" r="15" fill="#8b5cf6"/>
+  <rect x="220" y="175" width="40" height="30" fill="#8b5cf6" opacity="0.7"/>
+  
+  <!-- Arrow pointing to target -->
+  <path d="M280,190 Q400,150 520,190" stroke="#8b5cf6" stroke-width="3" fill="none" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" values="0;10;0" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M500,180 L520,190 L500,200" stroke="#8b5cf6" stroke-width="3" fill="none"/>
+  
+  <!-- Target/bullseye -->
+  <circle cx="580" cy="190" r="50" fill="none" stroke="#8b5cf6" stroke-width="3"/>
+  <circle cx="580" cy="190" r="35" fill="none" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="580" cy="190" r="20" fill="none" stroke="#c4b5fd" stroke-width="2"/>
+  <circle cx="580" cy="190" r="8" fill="#8b5cf6"/>
+  
+  <!-- Floating engagement icons -->
+  <g opacity="0.6">
+    <!-- Like icon -->
+    <path d="M200,100 C200,90 210,85 220,95 C230,85 240,90 240,100 C240,115 220,125 220,125 C220,125 200,115 200,100 Z" fill="#ff6b6b">
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,-10;0,0" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Share icon -->
+    <circle cx="350" cy="280" r="8" fill="#4ecdc4"/>
+    <path d="M345,280 L355,270 M355,280 L355,270 M350,275 L360,275" stroke="#ffffff" stroke-width="1.5"/>
+    <animateTransform attributeName="transform" type="rotate" values="0 350 280;360 350 280" dur="3s" repeatCount="indefinite"/>
+    
+    <!-- Comment icon -->
+    <rect x="480" y="120" width="30" height="20" rx="5" fill="#45b7d1"/>
+    <circle cx="487" cy="130" r="2" fill="#ffffff"/>
+    <circle cx="495" cy="130" r="2" fill="#ffffff"/>
+    <circle cx="503" cy="130" r="2" fill="#ffffff"/>
+    <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="1.5s" repeatCount="indefinite"/>
+  </g>
+  
+  <!-- Background geometric shapes -->
+  <polygon points="50,50 100,30 150,50 130,100 70,100" fill="url(#marketingGradient)" opacity="0.2"/>
+  <circle cx="700" cy="100" r="30" fill="url(#marketingGradient)" opacity="0.3"/>
+  <rect x="650" y="300" width="40" height="40" rx="5" fill="url(#marketingGradient)" opacity="0.25" transform="rotate(45 670 320)"/>
+</svg>
