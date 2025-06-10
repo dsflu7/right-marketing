@@ -37,8 +37,10 @@
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#154734" />
 
-	<meta name="msvalidate.01" content="" />
-	<meta name="google-site-verification" content="" />
+	<!-- <meta name="msvalidate.01" content="" />
+	<meta name="google-site-verification" content="" /> -->
+
+	<meta name="trustpilot-one-time-domain-verification-id" content="c04a466e-785f-4d59-ad80-06650bf1f812"/>
 </svelte:head>
 
 <svelte:window bind:scrollY />
