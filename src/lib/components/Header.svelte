@@ -207,6 +207,17 @@
 				</Dropdown>
 
 				<a
+					href="{domain}/packages"
+					onclick={(e) => {
+						e.preventDefault();
+						goto('/packages');
+					}}
+					class="font-semibold {colorState ? 'text-white' : 'text-primary-foreground'}"
+				>
+					Packages
+				</a>
+
+				<a
 					href="{domain}/gallery"
 					onclick={(e) => {
 						e.preventDefault();
