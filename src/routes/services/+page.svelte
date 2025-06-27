@@ -326,7 +326,10 @@
 				<Button href={`${domain}/contact`} variant="secondary" size="lg" class="font-medium">
 					Get a Free Consultation
 				</Button>
-				<Button href={`${domain}/contact`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">
+				<Button href={`${domain}/packages`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">
+					View Our Packages
+				</Button>
+				<Button href={`${domain}/gallery`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">
 					View Our Portfolio
 				</Button>
 			</div>

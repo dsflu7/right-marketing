@@ -62,7 +62,19 @@
 				View All Services
 			</a>
 		</Button>
-		<Button onclick={() => goto('/contact')} variant="outline" size="lg" class="min-h-[44px] min-w-[44px]">
+		<Button onclick={() => goto('/packages')} variant="outline" size="lg" class="min-h-[44px] min-w-[44px]">
+			<a
+				href={`${domain}/packages`}
+				onclick={(e) => {
+					e.preventDefault();
+					goto('/packages');
+				}}
+				class="flex h-full w-full items-center justify-center"
+			>
+				View Packages
+			</a>
+		</Button>
+		<Button onclick={() => goto('/contact')} variant="secondary" size="lg" class="min-h-[44px] min-w-[44px]">
 			<a
 				href={`${domain}/contact`}
 				onclick={(e) => {

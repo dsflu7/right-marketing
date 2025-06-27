@@ -43,6 +43,20 @@
 			<Button 
 				variant="outline" 
 				class="bg-white/10 text-white border-white/40 hover:bg-white/20"
+				onclick={() => goto('/packages')}
+			>
+				<a
+					href={`${domain}/packages`}
+					onclick={(e) => {
+						e.preventDefault();
+					}}
+				>
+					View Packages
+				</a>
+			</Button>
+			<Button 
+				variant="outline" 
+				class="bg-white/10 text-white border-white/40 hover:bg-white/20"
 				onclick={() => goto('/gallery')}
 			>
 				<a

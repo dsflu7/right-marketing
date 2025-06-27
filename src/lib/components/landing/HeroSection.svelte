@@ -50,6 +50,23 @@
 			</a>
 		</Button>
 		<Button
+			onclick={() => goto('/packages')}
+			variant="outline"
+			aria-label="View Packages"
+			class="bg-white/20 text-white border-white hover:bg-white hover:text-primary text-lg"
+			size="lg"
+		>
+			<a
+				href={`${domain}/packages`}
+				onclick={(e) => {
+					e.preventDefault();
+					goto('/packages');
+				}}
+			>
+				View Packages
+			</a>
+		</Button>
+		<Button
 			onclick={() => goto('/services')}
 			variant="secondary"
 			aria-label="Our Services"
