@@ -264,7 +264,7 @@
 	</div>
 
 	<!-- CTA Section -->
-	<div class="cta-section">
+	<div class="cta-section w-full">
 		<CTASection />
 	</div>
 

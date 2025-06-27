@@ -11,6 +11,7 @@
 	import { PUBLIC_COMPANY_NAME } from '$env/static/public';
 	import { Cross2, HamburgerMenu } from 'svelte-radix';
 	import { services } from '$lib/data/services';
+	import { serviceAreas } from '$lib/data/service-areas';
 	import { contactInfo } from '$lib/data/locations';
 	import Dropdown from '$lib/components/Dropdown.svelte';
 	import DropdownItem from '$lib/components/DropdownItem.svelte';
@@ -203,6 +204,47 @@
 						}}
 					>
 						<a href="{domain}/terms-and-conditions/" onclick={(e) => e.preventDefault()}>Terms & Conditions</a>
+					</DropdownItem>
+				</Dropdown>
+
+				<Dropdown
+					label="Service Areas"
+					buttonClass={colorState ? 'text-white' : 'text-primary-foreground'}
+					title="Service Areas"
+					menuClass="w-64"
+				>
+					<DropdownItem
+						onclick={() => {
+							goto('/service-areas');
+						}}
+						class="border-b"
+					>
+						<a href="{domain}/service-areas/" onclick={(e) => e.preventDefault()}> All Service Areas </a>
+					</DropdownItem>
+					<div class="px-2 py-1 text-xs font-semibold text-muted-foreground border-b">Metro Vancouver</div>
+					<DropdownItem onclick={() => goto('/service-areas/vancouver')}>
+						<a href="{domain}/service-areas/vancouver" onclick={(e) => e.preventDefault()}>Vancouver</a>
+					</DropdownItem>
+					<DropdownItem onclick={() => goto('/service-areas/burnaby')}>
+						<a href="{domain}/service-areas/burnaby" onclick={(e) => e.preventDefault()}>Burnaby</a>
+					</DropdownItem>
+					<DropdownItem onclick={() => goto('/service-areas/richmond')}>
+						<a href="{domain}/service-areas/richmond" onclick={(e) => e.preventDefault()}>Richmond</a>
+					</DropdownItem>			<DropdownItem onclick={() => goto('/service-areas/surrey')}>
+				<a href="{domain}/service-areas/surrey" onclick={(e) => e.preventDefault()}>Surrey</a>
+			</DropdownItem>
+					<div class="px-2 py-1 text-xs font-semibold text-muted-foreground border-b">Fraser Valley</div>
+					<DropdownItem onclick={() => goto('/service-areas/abbotsford')}>
+						<a href="{domain}/service-areas/abbotsford" onclick={(e) => e.preventDefault()}>Abbotsford</a>
+					</DropdownItem>
+					<DropdownItem onclick={() => goto('/service-areas/langley')}>
+						<a href="{domain}/service-areas/langley" onclick={(e) => e.preventDefault()}>Langley</a>
+					</DropdownItem>
+					<DropdownItem onclick={() => goto('/service-areas/chilliwack')}>
+						<a href="{domain}/service-areas/chilliwack" onclick={(e) => e.preventDefault()}>Chilliwack</a>
+					</DropdownItem>
+					<DropdownItem onclick={() => goto('/service-areas/mission')}>
+						<a href="{domain}/service-areas/mission" onclick={(e) => e.preventDefault()}>Mission</a>
 					</DropdownItem>
 				</Dropdown>
 
