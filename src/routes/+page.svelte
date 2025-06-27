@@ -7,6 +7,7 @@
 	import type { PageData } from './$types';
 	import { PUBLIC_COMPANY_NAME, PUBLIC_DOMAIN } from '$env/static/public';
 	import Image from '$lib/components/Image.svelte';
+	import { PageAnimations, shouldEnableAnimations } from '$lib/utils/animations';
 
 	// Import components for each section
 	import {
@@ -39,6 +40,20 @@
 	const domain = $derived(`${page.url.protocol}//${page.url.host}`);
 
 	onMount(() => {
+		// Initialize animations if enabled
+		if (shouldEnableAnimations()) {
+			// Animate hero section
+			PageAnimations.animateHero('.hero-section');
+			
+			// Animate other sections
+			PageAnimations.animateSection('.intro-section');
+			PageAnimations.animateSection('.about-section');
+			PageAnimations.animateSection('.services-section');
+			PageAnimations.animateSection('.testimonials-section');
+			PageAnimations.animateSection('.faq-section');
+			PageAnimations.animateSection('.cta-section');
+		}
+
 		if (page.url.toString().includes('services')) {
 			servicesSection?.scrollIntoView({ behavior: 'smooth' });
 		}
@@ -64,6 +79,10 @@
 			// Clean up observer on component unmount
 			if (reviewsSection) {
 				observer.unobserve(reviewsSection);
+			}
+			// Clean up GSAP animations
+			if (shouldEnableAnimations()) {
+				PageAnimations.cleanup();
 			}
 		};
 	});
@@ -196,7 +215,7 @@
 <main class="flex w-full flex-col items-center gap-16 pb-48 lg:gap-16">
 	<!-- Hero Section -->
 	<section
-		class="relative flex h-[90vh] w-full flex-row justify-evenly gap-0 overflow-hidden object-cover text-background"
+		class="hero-section relative flex h-[90vh] w-full flex-row justify-evenly gap-0 overflow-hidden object-cover text-background"
 	>
 		<!-- Enhanced gradient background with decorative elements -->
 		<div class="absolute inset-0 overflow-hidden">
@@ -218,7 +237,7 @@
 	</section>
 
 	<!-- Intro Section -->
-	<section class="relative">
+	<section class="intro-section relative">
 		<!-- Add decorative wave at the top -->
 		<div class="absolute top-0 left-0 w-full h-16 opacity-20">
 			<img src="/assets/decorative-wave.svg" alt="" class="w-full h-full" />
@@ -227,7 +246,7 @@
 	</section>
 
 	<!-- About Section -->
-	<section class="relative">
+	<section class="about-section relative">
 		<!-- Add network graphic as decoration -->
 		<div class="absolute top-10 right-10 w-64 h-48 opacity-5 hidden lg:block">
 			<img src="/assets/network-graphic.svg" alt="" class="w-full h-full" />
@@ -240,13 +259,17 @@
 	</section>
 
 	<!-- Services Section -->
-	<ServicesSection bind:instance={servicesSection} />
+	<div class="services-section">
+		<ServicesSection bind:instance={servicesSection} />
+	</div>
 
 	<!-- CTA Section -->
-	<CTASection />
+	<div class="cta-section">
+		<CTASection />
+	</div>
 
 	<!-- Testimonials Section -->
-	<section class="relative">
+	<section class="testimonials-section relative">
 		<!-- Add success chart graphic -->
 		<div class="absolute top-20 left-10 w-48 h-36 opacity-5 hidden lg:block">
 			<img src="/assets/success-chart.svg" alt="" class="w-full h-full" />
@@ -263,6 +286,34 @@
 </main>
 
 <!-- FAQ Section -->
-<FAQSection />
+<div class="faq-section">
+	<FAQSection />
+</div>
+
+<style>
+	/* Hide elements initially for GSAP animations */
+	.hero-section,
+	.intro-section,
+	.about-section,
+	.services-section,
+	.testimonials-section,
+	.cta-section,
+	.faq-section {
+		opacity: 0;
+	}
+	
+	/* Prevent layout shift during animation loading */
+	@media (prefers-reduced-motion: reduce) {
+		.hero-section,
+		.intro-section,
+		.about-section,
+		.services-section,
+		.testimonials-section,
+		.cta-section,
+		.faq-section {
+			opacity: 1 !important;
+		}
+	}
+</style>
 
 

@@ -11,6 +11,8 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { fade, fly } from 'svelte/transition';
+	import { PageAnimations, shouldEnableAnimations } from '$lib/utils/animations';
+	import { onMount } from 'svelte';
 
 	// Dialog state for viewing website GIFs
 	let dialogOpen = $state(false);
@@ -62,6 +64,25 @@
 	}
 
 	let domain = $derived(`${page.url.protocol}//${page.url.host}`);
+
+	onMount(() => {
+		if (shouldEnableAnimations()) {
+			// Animate hero section
+			PageAnimations.animateHero('.gallery-hero');
+			
+			// Animate filter controls
+			PageAnimations.animateSection('.gallery-filters');
+			
+			// Animate gallery grid items
+			PageAnimations.animateGallery('.gallery-item');
+		}
+		
+		return () => {
+			if (shouldEnableAnimations()) {
+				PageAnimations.cleanup();
+			}
+		};
+	});
 </script>
 
 <svelte:head>
@@ -227,7 +248,7 @@
 <main class="relative mt-24 overflow-hidden lg:mt-16">
 	<!-- Hero Section with Background -->
 	<section
-		class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-transparent to-primary/10 py-24"
+		class="gallery-hero relative overflow-hidden bg-gradient-to-br from-primary/5 via-transparent to-primary/10 py-24"
 	>
 		<!-- Enhanced background decorative elements -->
 		<div class="absolute right-10 top-10 h-36 w-48 opacity-15">
@@ -306,7 +327,7 @@
 
 	<div class="container mx-auto max-w-7xl px-4 py-16">
 		<!-- Search Section -->
-		<section class="mb-12">
+		<section class="gallery-filters mb-12">
 			<div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 				<div class="w-full lg:w-1/3">
 					<div class="relative">
@@ -343,7 +364,7 @@
 			{#each filteredProjects as project (project.id)}
 				<div
 					id={project.id}
-					class="group relative overflow-hidden rounded-2xl border border-border/50 bg-card shadow-lg transition-all duration-500 hover:shadow-2xl"
+					class="gallery-item group relative overflow-hidden rounded-2xl border border-border/50 bg-card shadow-lg transition-all duration-500 hover:shadow-2xl"
 					transition:fade={{ duration: 300 }}
 				>
 					<!-- Background gradient -->
@@ -576,3 +597,21 @@
 		</section>
 	</div>
 </main>
+
+<style>
+	/* Hide elements initially for GSAP animations */
+	.gallery-hero,
+	.gallery-filters,
+	.gallery-item {
+		opacity: 0;
+	}
+	
+	/* Prevent layout shift during animation loading */
+	@media (prefers-reduced-motion: reduce) {
+		.gallery-hero,
+		.gallery-filters,
+		.gallery-item {
+			opacity: 1 !important;
+		}
+	}
+</style>

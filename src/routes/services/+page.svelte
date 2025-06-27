@@ -12,6 +12,7 @@
 		CardFooter
 	} from '$lib/components/ui/card';
 	import { page } from '$app/state';
+	import { PageAnimations, shouldEnableAnimations } from '$lib/utils/animations';
 	// import { serviceImagesDict } from '$lib/icons/services/service_images';
 
 	import { PUBLIC_COMPANY_NAME, PUBLIC_DOMAIN } from '$env/static/public';
@@ -24,6 +25,25 @@
 	};
 
 	const domain = $derived(`${page.url.protocol}//${page.url.host}`);
+	
+	onMount(() => {
+		if (shouldEnableAnimations()) {
+			// Animate hero section
+			PageAnimations.animateHero('.services-hero');
+			
+			// Animate service cards with stagger - target the grid items
+			PageAnimations.animateCards('.services-grid > *');
+			
+			// Animate CTA section
+			PageAnimations.animateSection('.services-cta');
+		}
+		
+		return () => {
+			if (shouldEnableAnimations()) {
+				PageAnimations.cleanup();
+			}
+		};
+	});
 </script>
 
 <svelte:head>
@@ -136,7 +156,7 @@
 		<img src="/assets/floating-dots.svg" alt="" class="w-full h-full" />
 	</div>
 	
-	<section class="mb-16 relative z-10">
+	<section class="services-hero mb-16 relative z-10">
 		<div class="text-center mb-12">
 			<h1 class="mb-6 text-center text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">Our Services</h1>
 			<div class="mx-auto mb-8 h-1 w-24 rounded-full bg-primary"></div>
@@ -145,7 +165,7 @@
 			</p>
 		</div>
 
-		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+		<div class="services-grid grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each services as serviceId}
 				{#if serviceData[serviceId]}
 					<Card class="flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-lg group">
@@ -285,7 +305,7 @@
 	</div>
 
 	<!-- Call to action -->
-	<section class="mb-16 rounded-lg bg-gradient-to-r from-primary to-primary/90 p-8 shadow-lg relative overflow-hidden">
+	<section class="services-cta mb-16 rounded-lg bg-gradient-to-r from-primary to-primary/90 p-8 shadow-lg relative overflow-hidden">
 		<!-- Background decorative elements -->
 		<div class="absolute top-4 right-4 w-16 h-12 opacity-20">
 			<img src="/assets/success-chart.svg" alt="" class="w-full h-full filter invert" />
@@ -313,3 +333,21 @@
 		</div>
 	</section>
 </main>
+
+<style>
+	/* Hide elements initially for GSAP animations */
+	.services-hero,
+	.services-grid > :global(*),
+	.services-cta {
+		opacity: 0;
+	}
+	
+	/* Prevent layout shift during animation loading */
+	@media (prefers-reduced-motion: reduce) {
+		.services-hero,
+		.services-grid > :global(*),
+		.services-cta {
+			opacity: 1 !important;
+		}
+	}
+</style>
