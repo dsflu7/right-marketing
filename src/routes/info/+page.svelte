@@ -3,11 +3,11 @@
 	import { gsap } from 'gsap';
 	import { Draggable } from 'gsap/Draggable';
 
-	let cardContainer: HTMLElement;
-	let rotationX = 0;
-	let rotationY = 0;
-	let rotationZ = 0;
-	let floatingTween: gsap.core.Tween | gsap.core.Timeline;
+	let cardContainer: HTMLElement | null = $state(null);
+	let rotationX = $state(0);
+	let rotationY = $state(0);
+	let rotationZ = $state(0);
+	let floatingTween: gsap.core.Tween | gsap.core.Timeline | null = $state(null);
 
 	onMount(() => {
 		gsap.registerPlugin(Draggable);
@@ -69,35 +69,34 @@
 				}, 300);
 			}
 		});
+	});
 
-		// Add additional controls for z-dimension
-		let tapTimeout: number;
-		cardContainer.addEventListener('touchstart', (e) => {
-			if (e.touches.length === 2) {
-				// Two-finger gesture for z-rotation
-				e.preventDefault();
-				rotationZ += 15;
-				gsap.to(cardContainer, {
-					rotationZ: rotationZ,
-					duration: 0.5,
-					ease: 'power2.out'
-				});
-			}
-		});
-
-		// Mouse wheel for z-axis movement (depth)
-		cardContainer.addEventListener('wheel', (e) => {
+	function handleTouchStart(e: TouchEvent) {
+		if (e.touches.length === 2) {
+			// Two-finger gesture for z-rotation
 			e.preventDefault();
-			const currentZ = gsap.getProperty(cardContainer, 'z') as number;
-			const newZ = currentZ + (e.deltaY > 0 ? -20 : 20);
-			
+			rotationZ += 15;
 			gsap.to(cardContainer, {
-				z: Math.max(-100, Math.min(100, newZ)),
-				duration: 0.3,
+				rotationZ: rotationZ,
+				duration: 0.5,
 				ease: 'power2.out'
 			});
+		}
+	}
+
+	function handleWheel(e: WheelEvent) {
+		e.preventDefault();
+		if (!cardContainer) return;
+		
+		const currentZ = gsap.getProperty(cardContainer, 'z') as number;
+		const newZ = currentZ + (e.deltaY > 0 ? -20 : 20);
+		
+		gsap.to(cardContainer, {
+			z: Math.max(-100, Math.min(100, newZ)),
+			duration: 0.3,
+			ease: 'power2.out'
 		});
-	});
+	}
 
 	function startFloatingAnimation() {
 		const tl = gsap.timeline({ repeat: -1 });
@@ -159,6 +158,8 @@
 		<div
 			class="card-container relative h-[calc(min(500px,80vw)*0.571)] w-[min(500px,80vw)] transform-gpu bg-primary max-[480px]:h-[calc(min(320px,85vw)*0.571)] max-[480px]:w-[min(320px,85vw)] max-[320px]:h-[calc(min(280px,90vw)*0.571)] max-[320px]:w-[min(280px,90vw)] lg:h-[calc(600px*0.571)] lg:w-[600px]"
 			bind:this={cardContainer}
+			ontouchstart={handleTouchStart}
+			onwheel={handleWheel}
 		>
 			<!-- Card Front -->
 			<div class="card-front" style="">
