@@ -20,6 +20,35 @@
 	let floatingTween: gsap.core.Tween | gsap.core.Timeline | null = $state(null);
 	let autoRotateTween: gsap.core.Tween | null = $state(null);
 	let isManuallyInteracting = $state(false);
+	
+	// Business card aspect ratio (standard business card: 3.5" x 2" = 7:4)
+	
+	// Reactive width for responsive sizing
+	let cardWidth = $state('min(500px, 80vw)');
+	
+	// Update width based on viewport
+	$effect(() => {
+		if (typeof window !== 'undefined') {
+			const updateWidth = () => {
+				const vw = window.innerWidth;
+				
+				if (vw <= 320) {
+					cardWidth = 'min(280px, 90vw)';
+				} else if (vw <= 480) {
+					cardWidth = 'min(320px, 85vw)';
+				} else if (vw >= 1024) {
+					cardWidth = '600px';
+				} else {
+					cardWidth = 'min(500px, 80vw)';
+				}
+			};
+			
+			updateWidth();
+			window.addEventListener('resize', updateWidth);
+			
+			return () => window.removeEventListener('resize', updateWidth);
+		}
+	});
 
 	export function rotate(x: number, y: number, z: number, duration: number = 1) {
 		if (!cardContainer) return;
@@ -362,11 +391,11 @@
 
 <div class="card-scene box-border flex w-full items-center justify-center p-5" style="perspective: {cardConfig.perspective}px; perspective-origin: center center;">
 	<div
-		class="card-container relative transform-gpu bg-primary {cardConfig.width} {cardConfig.height} {cardConfig.responsiveWidth} {cardConfig.responsiveHeight} {cardConfig.largeWidth} {cardConfig.largeHeight}"
+		class="card-container relative transform-gpu bg-primary"
 		bind:this={cardContainer}
 		ontouchstart={handleTouchStart}
 		onwheel={handleWheel}
-		style="transform-style: preserve-3d;"
+		style="transform-style: preserve-3d; width: {cardWidth}; aspect-ratio: 7 / 4;"
 	>
 		<!-- Card Front -->
 		<div class="card-front">
@@ -445,14 +474,5 @@
 
 	.card-back {
 		transform: rotateY(180deg) translateZ(2px);
-	}
-
-	.center-zone {
-		z-index: 10;
-		border: 1px dashed rgba(255, 255, 255, 0.2);
-	}
-
-	.card-container:hover .center-zone {
-		opacity: 0.1 !important;
 	}
 </style>

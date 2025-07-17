@@ -6,12 +6,10 @@
 	import { scrollThreshold } from '$lib/utils/animations.store';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { isMobile, quoteDialogOpen, servicesPageNavigating } from '$lib/utils/stores';
+	import { isMobile, servicesPageNavigating } from '$lib/utils/stores';
 	import { slide } from 'svelte/transition';
-	import { PUBLIC_COMPANY_NAME } from '$env/static/public';
 	import { Cross2, HamburgerMenu } from 'svelte-radix';
 	import { services } from '$lib/data/services';
-	import { serviceAreas } from '$lib/data/service-areas';
 	import { contactInfo } from '$lib/data/locations';
 	import Dropdown from '$lib/components/Dropdown.svelte';
 	import DropdownItem from '$lib/components/DropdownItem.svelte';
@@ -101,17 +99,7 @@
 			? 'border-transparent bg-transparent'
 			: ' bg-primary'} border-black transition-all duration-500 ease-out"
 	>
-		<!-- <button
-			class="flex items-center pl-20 font-[Cantarell] text-xl lg:text-2xl {initScroll <
-				$scrollThreshold && isLandingPage
-				? 'text-transparent'
-				: 'text-[#00000080]'}"
-			id="header-logo-area"
-			onclick={() => goto('/')}
-			aria-label="Go to home page"
-		>
-			{PUBLIC_COMPANY_NAME}
-		</button> -->
+
 		<div class="hidden pl-20 md:block"></div>
 
 		{#if !(initScroll < $scrollThreshold && isLandingPage) && $isMobile}

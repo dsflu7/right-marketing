@@ -7,7 +7,7 @@
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { CaretUp } from 'svelte-radix';
 	import FloatingShare from '$lib/components/FloatingShare.svelte';
-	import { isMobile } from '$lib/utils/stores';
+	import { hideFooter, hideHeader, isMobile } from '$lib/utils/stores';
 	import ComingSoon from '$lib/components/ComingSoon.svelte';
 
 	interface Props {
@@ -40,7 +40,10 @@
 	<!-- <meta name="msvalidate.01" content="" />
 	<meta name="google-site-verification" content="" /> -->
 
-	<meta name="trustpilot-one-time-domain-verification-id" content="c04a466e-785f-4d59-ad80-06650bf1f812"/>
+	<meta
+		name="trustpilot-one-time-domain-verification-id"
+		content="c04a466e-785f-4d59-ad80-06650bf1f812"
+	/>
 </svelte:head>
 
 <svelte:window bind:scrollY />
@@ -53,12 +56,16 @@
 	</div>
 {/if}
 
-<div class="h-screen flex-col justify-between flex">
-	<Header />
+<div class="flex h-screen flex-col justify-between">
+	{#if !$hideHeader}
+		<Header />
+	{/if}
 	<main class="">
 		{@render children?.()}
 	</main>
-	<Footer />
+	{#if !$hideFooter}
+		<Footer />
+	{/if}
 </div>
 
 {#if scrollY !== 0}
@@ -70,7 +77,9 @@
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}}
 	>
-		<CaretUp class="scale-125 text-primary-foreground transition-all duration-500 group-hover:scale-110" />
+		<CaretUp
+			class="scale-125 text-primary-foreground transition-all duration-500 group-hover:scale-110"
+		/>
 	</button>
 {/if}
 

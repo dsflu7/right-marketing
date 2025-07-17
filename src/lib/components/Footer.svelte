@@ -3,7 +3,6 @@
 	import { PUBLIC_COMPANY_NAME, PUBLIC_DOMAIN } from '$env/static/public';
 	import { contactInfo } from '$lib/data/locations';
 	import MainLogo from '$lib/icons/MainLogo.svelte';
-	import { quoteDialogOpen } from '$lib/utils/stores';
 	import Image from './Image.svelte';
 	// Import enhanced logo image
 	// import logoAddr from '$lib/icons/logo.png?enhanced';
@@ -50,10 +49,6 @@
 			<a
 				href={item.route}
 				onclick={(e) => {
-					if (item.label === 'FREE QUOTES') {
-						e.preventDefault();
-						$quoteDialogOpen = true;
-					}
 				}}
 				aria-label={item.label === 'FREE QUOTES'
 					? 'Open quote request form'

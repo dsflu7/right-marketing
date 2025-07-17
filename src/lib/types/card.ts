@@ -32,14 +32,6 @@ export interface CardProps {
 	// Visual settings
 	perspective?: number;
 	cardScale?: number;
-	
-	// CSS classes for responsive design
-	width?: string;
-	height?: string;
-	responsiveWidth?: string;
-	responsiveHeight?: string;
-	largeWidth?: string;
-	largeHeight?: string;
 }
 
 export const defaultCardProps: CardProps = {
@@ -75,13 +67,5 @@ export const defaultCardProps: CardProps = {
 	
 	// Visual settings
 	perspective: 1000,
-	cardScale: 1,
-	
-	// CSS classes for responsive design
-	width: 'w-[min(500px,80vw)]',
-	height: 'h-[calc(min(500px,80vw)*0.571)]',
-	responsiveWidth: 'max-[480px]:w-[min(320px,85vw)] max-[320px]:w-[min(280px,90vw)]',
-	responsiveHeight: 'max-[480px]:h-[calc(min(320px,85vw)*0.571)] max-[320px]:h-[calc(min(280px,90vw)*0.571)]',
-	largeWidth: 'lg:w-[600px]',
-	largeHeight: 'lg:h-[calc(600px*0.571)]'
+	cardScale: 1
 };
